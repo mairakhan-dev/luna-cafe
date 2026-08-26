@@ -1,0 +1,2041 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Luna Café | Coffee, Food &amp; Good Moments</title>
+    <meta name="description" content="Luna Café is a cozy neighborhood café serving specialty coffee, fresh food, and homemade desserts in Abbottabad." />
+    <meta property="og:title" content="Luna Café | Coffee, Food &amp; Good Moments" />
+    <meta property="og:description" content="Luna Café is a cozy neighborhood café serving specialty coffee, fresh food, and homemade desserts in Abbottabad." />
+    <meta property="og:type" content="website" />
+    <meta property="og:url" content="https://lunacafe.example" />
+    <meta property="og:image" content="https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=1200&q=80&auto=format&fit=crop" />
+    <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>☕</text></svg>" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+    <style>
+        /* ===== CSS VARIABLES ===== */
+        :root {
+            --espresso: #2C1810;
+            --espresso-light: #3C2415;
+            --cream: #F5EDE3;
+            --beige: #E8D5C4;
+            --terracotta: #C67A5C;
+            --terracotta-light: #D4927A;
+            --terracotta-dark: #A85E42;
+            --warm-offwhite: #FAF6F0;
+            --text-dark: #1E130E;
+            --text-muted: #6B5A4E;
+            --white: #FFFFFF;
+            --shadow: 0 8px 32px rgba(44, 24, 16, 0.10);
+            --shadow-hover: 0 12px 40px rgba(44, 24, 16, 0.18);
+            --radius: 12px;
+            --radius-sm: 6px;
+            --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --font-serif: 'Playfair Display', Georgia, serif;
+            --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            --max-width: 1200px;
+            --header-height: 72px;
+        }
+
+        /* ===== RESET & BASE ===== */
+        *,
+        *::before,
+        *::after {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+            -webkit-font-smoothing: antialiased;
+            -moz-osx-font-smoothing: grayscale;
+        }
+
+        body {
+            font-family: var(--font-sans);
+            color: var(--text-dark);
+            background: var(--warm-offwhite);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        img {
+            display: block;
+            max-width: 100%;
+            height: auto;
+        }
+
+        a {
+            color: inherit;
+            text-decoration: none;
+        }
+
+        button {
+            cursor: pointer;
+            font-family: inherit;
+            border: none;
+            background: none;
+            color: inherit;
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        .container {
+            width: 100%;
+            max-width: var(--max-width);
+            margin: 0 auto;
+            padding: 0 24px;
+        }
+
+        .section-padding {
+            padding: 80px 0;
+        }
+
+        .section-padding-sm {
+            padding: 56px 0;
+        }
+
+        .section-label {
+            display: inline-block;
+            font-size: 0.75rem;
+            font-weight: 600;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--terracotta);
+            margin-bottom: 12px;
+            font-family: var(--font-sans);
+        }
+
+        .section-title {
+            font-family: var(--font-serif);
+            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-weight: 700;
+            line-height: 1.2;
+            color: var(--espresso);
+            margin-bottom: 16px;
+        }
+
+        .section-sub {
+            font-size: 1.1rem;
+            color: var(--text-muted);
+            max-width: 600px;
+            font-weight: 300;
+            line-height: 1.7;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .mx-auto {
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        /* ===== BUTTONS ===== */
+        .btn {
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            padding: 14px 32px;
+            font-size: 0.95rem;
+            font-weight: 600;
+            border-radius: 50px;
+            transition: var(--transition);
+            letter-spacing: 0.3px;
+            border: 2px solid transparent;
+            font-family: var(--font-sans);
+            line-height: 1;
+            text-align: center;
+            min-height: 54px;
+        }
+
+        .btn-primary {
+            background: var(--espresso);
+            color: var(--white);
+            border-color: var(--espresso);
+        }
+        .btn-primary:hover {
+            background: var(--espresso-light);
+            border-color: var(--espresso-light);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--espresso);
+            border-color: var(--espresso);
+        }
+        .btn-secondary:hover {
+            background: var(--espresso);
+            color: var(--white);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-terracotta {
+            background: var(--terracotta);
+            color: var(--white);
+            border-color: var(--terracotta);
+        }
+        .btn-terracotta:hover {
+            background: var(--terracotta-dark);
+            border-color: var(--terracotta-dark);
+            transform: translateY(-2px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        .btn-outline-light {
+            background: transparent;
+            color: var(--white);
+            border-color: rgba(255, 255, 255, 0.5);
+        }
+        .btn-outline-light:hover {
+            background: var(--white);
+            color: var(--espresso);
+            border-color: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .btn-sm {
+            padding: 10px 24px;
+            font-size: 0.85rem;
+            min-height: 44px;
+        }
+
+        /* ===== HEADER / NAV ===== */
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 1000;
+            height: var(--header-height);
+            display: flex;
+            align-items: center;
+            transition: background 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
+            background: transparent;
+        }
+
+        .header.scrolled {
+            background: rgba(250, 246, 240, 0.92);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+            box-shadow: 0 1px 20px rgba(44, 24, 16, 0.06);
+        }
+
+        .header .container {
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            height: 100%;
+        }
+
+        .logo {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            font-weight: 700;
+            letter-spacing: 1px;
+            color: var(--espresso);
+            flex-shrink: 0;
+        }
+        .logo span {
+            color: var(--terracotta);
+        }
+
+        .nav-desktop {
+            display: flex;
+            align-items: center;
+            gap: 32px;
+        }
+
+        .nav-desktop a {
+            font-size: 0.9rem;
+            font-weight: 500;
+            color: var(--text-dark);
+            transition: color 0.25s;
+            position: relative;
+            letter-spacing: 0.2px;
+        }
+        .nav-desktop a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--terracotta);
+            transition: width 0.3s ease;
+        }
+        .nav-desktop a:hover::after,
+        .nav-desktop a:focus::after {
+            width: 100%;
+        }
+        .nav-desktop a:hover {
+            color: var(--terracotta);
+        }
+
+        .nav-desktop .btn {
+            margin-left: 8px;
+        }
+
+        .hamburger {
+            display: none;
+            flex-direction: column;
+            gap: 5px;
+            padding: 8px 4px;
+            background: none;
+            border: none;
+            cursor: pointer;
+            z-index: 1001;
+        }
+        .hamburger span {
+            display: block;
+            width: 26px;
+            height: 2.5px;
+            background: var(--espresso);
+            border-radius: 2px;
+            transition: var(--transition);
+            transform-origin: center;
+        }
+        .hamburger.active span:nth-child(1) {
+            transform: rotate(45deg) translate(5px, 5px);
+        }
+        .hamburger.active span:nth-child(2) {
+            opacity: 0;
+            transform: scaleX(0);
+        }
+        .hamburger.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(5px, -5px);
+        }
+
+        /* Mobile nav */
+        .nav-mobile {
+            position: fixed;
+            top: 0;
+            right: -100%;
+            width: 300px;
+            height: 100vh;
+            background: var(--warm-offwhite);
+            padding: 80px 32px 40px;
+            transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            box-shadow: -8px 0 40px rgba(44, 24, 16, 0.08);
+            z-index: 999;
+            display: flex;
+            flex-direction: column;
+            gap: 6px;
+            overflow-y: auto;
+        }
+        .nav-mobile.open {
+            right: 0;
+        }
+
+        .nav-mobile a {
+            font-size: 1.1rem;
+            font-weight: 500;
+            padding: 12px 0;
+            color: var(--text-dark);
+            border-bottom: 1px solid rgba(44, 24, 16, 0.06);
+            transition: color 0.25s;
+        }
+        .nav-mobile a:hover {
+            color: var(--terracotta);
+        }
+        .nav-mobile .btn {
+            margin-top: 16px;
+            width: 100%;
+            justify-content: center;
+        }
+
+        .nav-overlay {
+            position: fixed;
+            inset: 0;
+            background: rgba(44, 24, 16, 0.3);
+            z-index: 998;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+        }
+        .nav-overlay.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        /* ===== HERO ===== */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            position: relative;
+            background: var(--espresso);
+            padding-top: var(--header-height);
+        }
+
+        .hero-bg {
+            position: absolute;
+            inset: 0;
+            background-image: url('https://images.unsplash.com/photo-1501339847302-ac426a4a7cbb?w=1920&q=80&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center 30%;
+            background-repeat: no-repeat;
+            filter: brightness(0.45) saturate(1.05);
+            z-index: 0;
+        }
+
+        .hero .container {
+            position: relative;
+            z-index: 1;
+            padding: 60px 24px 80px;
+            max-width: 780px;
+        }
+
+        .hero-eyebrow {
+            font-size: 0.8rem;
+            font-weight: 500;
+            letter-spacing: 3px;
+            text-transform: uppercase;
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 20px;
+            font-family: var(--font-sans);
+        }
+
+        .hero h1 {
+            font-family: var(--font-serif);
+            font-size: clamp(2.8rem, 8vw, 5.2rem);
+            font-weight: 700;
+            line-height: 1.08;
+            color: var(--white);
+            margin-bottom: 20px;
+        }
+        .hero h1 span {
+            display: block;
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 1.4vw, 1.2rem);
+            color: rgba(255, 255, 255, 0.75);
+            max-width: 540px;
+            line-height: 1.8;
+            margin-bottom: 36px;
+            font-weight: 300;
+        }
+
+        .hero-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 16px;
+        }
+
+        .hero-scroll {
+            position: absolute;
+            bottom: 32px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: rgba(255, 255, 255, 0.35);
+            font-size: 0.75rem;
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 8px;
+            animation: bounce-down 2.4s ease-in-out infinite;
+            font-weight: 400;
+            z-index: 1;
+        }
+        .hero-scroll svg {
+            width: 20px;
+            height: 20px;
+            stroke: rgba(255, 255, 255, 0.35);
+            stroke-width: 2;
+            fill: none;
+        }
+
+        @keyframes bounce-down {
+            0%,
+            100% {
+                transform: translateX(-50%) translateY(0);
+            }
+            50% {
+                transform: translateX(-50%) translateY(8px);
+            }
+        }
+
+        /* ===== TRUST STRIP ===== */
+        .trust-strip {
+            background: var(--white);
+            border-bottom: 1px solid rgba(44, 24, 16, 0.05);
+            padding: 28px 0;
+        }
+
+        .trust-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            text-align: center;
+        }
+
+        .trust-item {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 4px;
+        }
+        .trust-item .icon {
+            font-size: 1.6rem;
+            margin-bottom: 4px;
+            opacity: 0.7;
+        }
+        .trust-item strong {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--espresso);
+        }
+        .trust-item span {
+            font-size: 0.8rem;
+            color: var(--text-muted);
+            font-weight: 400;
+        }
+
+        /* ===== OUR STORY ===== */
+        .story-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .story-image {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: var(--shadow);
+            background: var(--beige);
+            aspect-ratio: 4/3;
+        }
+        .story-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .story-image:hover img {
+            transform: scale(1.02);
+        }
+
+        .story-content .section-label {
+            margin-bottom: 8px;
+        }
+        .story-content .section-title {
+            margin-bottom: 20px;
+        }
+        .story-content p {
+            color: var(--text-muted);
+            margin-bottom: 16px;
+            font-size: 1rem;
+            line-height: 1.8;
+        }
+        .story-signature {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            font-style: italic;
+            color: var(--terracotta);
+            margin-top: 8px;
+        }
+        .story-link {
+            display: inline-block;
+            margin-top: 16px;
+            font-weight: 600;
+            color: var(--terracotta);
+            border-bottom: 2px solid var(--terracotta);
+            padding-bottom: 2px;
+            transition: var(--transition);
+        }
+        .story-link:hover {
+            color: var(--terracotta-dark);
+            border-color: var(--terracotta-dark);
+        }
+
+        /* ===== MENU ===== */
+        .menu-section {
+            background: var(--white);
+        }
+
+        .menu-tabs {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            flex-wrap: wrap;
+            margin: 32px 0 40px;
+        }
+        .menu-tab {
+            padding: 10px 28px;
+            font-weight: 500;
+            font-size: 0.9rem;
+            border-radius: 50px;
+            background: transparent;
+            color: var(--text-muted);
+            border: 1px solid rgba(44, 24, 16, 0.1);
+            transition: var(--transition);
+            font-family: var(--font-sans);
+        }
+        .menu-tab:hover {
+            border-color: var(--terracotta);
+            color: var(--espresso);
+        }
+        .menu-tab.active {
+            background: var(--espresso);
+            color: var(--white);
+            border-color: var(--espresso);
+        }
+
+        .menu-grid {
+            display: grid;
+            grid-template-columns: repeat(2, 1fr);
+            gap: 24px 40px;
+        }
+
+        .menu-item {
+            display: flex;
+            gap: 16px;
+            align-items: flex-start;
+            padding: 16px 0;
+            border-bottom: 1px solid rgba(44, 24, 16, 0.05);
+            transition: var(--transition);
+        }
+        .menu-item:hover {
+            border-bottom-color: var(--terracotta);
+        }
+
+        .menu-item-img {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            overflow: hidden;
+            flex-shrink: 0;
+            background: var(--beige);
+            object-fit: cover;
+        }
+        .menu-item-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        .menu-item-info {
+            flex: 1;
+            min-width: 0;
+        }
+        .menu-item-info .name {
+            font-weight: 600;
+            font-size: 1rem;
+            color: var(--espresso);
+            display: flex;
+            justify-content: space-between;
+            align-items: baseline;
+            gap: 12px;
+        }
+        .menu-item-info .name .price {
+            font-weight: 600;
+            color: var(--terracotta);
+            font-size: 0.95rem;
+            white-space: nowrap;
+        }
+        .menu-item-info .desc {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+            margin-top: 2px;
+            line-height: 1.5;
+        }
+
+        .menu-footer {
+            text-align: center;
+            margin-top: 44px;
+        }
+
+        /* ===== SIGNATURE ===== */
+        .signature {
+            background: var(--espresso);
+            color: var(--white);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .signature-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .signature-image {
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            aspect-ratio: 4/3;
+            background: var(--espresso-light);
+        }
+        .signature-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s ease;
+        }
+        .signature-image:hover img {
+            transform: scale(1.02);
+        }
+
+        .signature-content .section-label {
+            color: var(--terracotta-light);
+        }
+        .signature-content .section-title {
+            color: var(--white);
+            margin-bottom: 16px;
+        }
+        .signature-content p {
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 1.05rem;
+            line-height: 1.8;
+            margin-bottom: 28px;
+            max-width: 480px;
+        }
+
+        /* ===== GALLERY ===== */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 16px;
+            margin-top: 32px;
+        }
+
+        .gallery-grid .gallery-item {
+            aspect-ratio: 1;
+            overflow: hidden;
+            border-radius: var(--radius-sm);
+            cursor: pointer;
+            background: var(--beige);
+            position: relative;
+            box-shadow: 0 2px 8px rgba(44, 24, 16, 0.04);
+            transition: var(--transition);
+        }
+        .gallery-grid .gallery-item:hover {
+            transform: scale(1.02);
+            box-shadow: var(--shadow);
+            z-index: 2;
+        }
+        .gallery-grid .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .gallery-grid .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-grid .gallery-item:nth-child(1) {
+            grid-column: span 2;
+            grid-row: span 2;
+        }
+
+        /* Lightbox */
+        .lightbox {
+            position: fixed;
+            inset: 0;
+            z-index: 2000;
+            background: rgba(44, 24, 16, 0.92);
+            backdrop-filter: blur(8px);
+            -webkit-backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s ease;
+            padding: 40px;
+        }
+        .lightbox.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+
+        .lightbox img {
+            max-width: 90vw;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: var(--radius-sm);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+            transform: scale(0.95);
+            transition: transform 0.4s ease;
+        }
+        .lightbox.active img {
+            transform: scale(1);
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 24px;
+            right: 32px;
+            background: rgba(255, 255, 255, 0.1);
+            border: none;
+            color: var(--white);
+            font-size: 2.2rem;
+            cursor: pointer;
+            width: 56px;
+            height: 56px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: var(--transition);
+            backdrop-filter: blur(4px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+        }
+        .lightbox-close:hover {
+            background: rgba(255, 255, 255, 0.2);
+            transform: rotate(90deg);
+        }
+
+        /* ===== WHY PEOPLE LOVE ===== */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            margin-top: 24px;
+        }
+
+        .feature-card {
+            text-align: center;
+            padding: 32px 20px 28px;
+            background: var(--white);
+            border-radius: var(--radius);
+            box-shadow: 0 2px 12px rgba(44, 24, 16, 0.04);
+            transition: var(--transition);
+            border: 1px solid rgba(44, 24, 16, 0.04);
+        }
+        .feature-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow);
+            border-color: rgba(198, 122, 92, 0.15);
+        }
+
+        .feature-card .icon {
+            font-size: 2.4rem;
+            margin-bottom: 12px;
+            display: block;
+        }
+        .feature-card h4 {
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            font-weight: 600;
+            color: var(--espresso);
+            margin-bottom: 8px;
+        }
+        .feature-card p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ===== REVIEWS ===== */
+        .reviews-section {
+            background: var(--cream);
+        }
+
+        .reviews-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 28px;
+            margin-top: 32px;
+        }
+
+        .review-card {
+            background: var(--white);
+            padding: 32px 28px;
+            border-radius: var(--radius);
+            box-shadow: 0 2px 12px rgba(44, 24, 16, 0.04);
+            transition: var(--transition);
+            border: 1px solid rgba(44, 24, 16, 0.04);
+        }
+        .review-card:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+        }
+
+        .review-stars {
+            color: #E8A838;
+            font-size: 1rem;
+            letter-spacing: 2px;
+            margin-bottom: 12px;
+        }
+        .review-card blockquote {
+            font-size: 1rem;
+            line-height: 1.7;
+            color: var(--text-dark);
+            font-style: italic;
+            margin-bottom: 12px;
+            quotes: none;
+        }
+        .review-card .author {
+            font-weight: 600;
+            color: var(--espresso);
+            font-size: 0.9rem;
+        }
+        .review-card .author small {
+            font-weight: 400;
+            color: var(--text-muted);
+            font-size: 0.8rem;
+        }
+
+        /* ===== INSTAGRAM ===== */
+        .instagram-grid {
+            display: grid;
+            grid-template-columns: repeat(6, 1fr);
+            gap: 12px;
+            margin-top: 28px;
+        }
+
+        .instagram-item {
+            aspect-ratio: 1;
+            overflow: hidden;
+            border-radius: var(--radius-sm);
+            background: var(--beige);
+            transition: var(--transition);
+            cursor: pointer;
+        }
+        .instagram-item:hover {
+            transform: scale(1.04);
+            box-shadow: var(--shadow);
+            z-index: 2;
+        }
+        .instagram-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        .instagram-item:hover img {
+            transform: scale(1.06);
+        }
+
+        .instagram-footer {
+            text-align: center;
+            margin-top: 28px;
+        }
+
+        /* ===== LOCATION / CONTACT ===== */
+        .location-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            align-items: stretch;
+        }
+
+        .location-info h3 {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            font-weight: 600;
+            color: var(--espresso);
+            margin-bottom: 12px;
+        }
+        .location-info .address {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .location-info .address strong {
+            color: var(--espresso);
+            font-weight: 600;
+        }
+        .location-info .detail-row {
+            display: flex;
+            gap: 12px;
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+            color: var(--text-muted);
+        }
+        .location-info .detail-row .label {
+            font-weight: 500;
+            color: var(--espresso);
+            min-width: 60px;
+        }
+        .location-info .detail-row a {
+            color: var(--terracotta);
+            transition: color 0.25s;
+        }
+        .location-info .detail-row a:hover {
+            color: var(--terracotta-dark);
+        }
+
+        .location-map {
+            background: var(--beige);
+            border-radius: var(--radius);
+            overflow: hidden;
+            min-height: 300px;
+            position: relative;
+            box-shadow: var(--shadow);
+        }
+        .location-map img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            min-height: 300px;
+        }
+        .location-map .map-overlay {
+            position: absolute;
+            inset: 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: rgba(44, 24, 16, 0.25);
+            color: var(--white);
+            text-align: center;
+            padding: 24px;
+            backdrop-filter: blur(2px);
+        }
+        .location-map .map-overlay strong {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 4px;
+        }
+        .location-map .map-overlay span {
+            font-size: 0.9rem;
+            opacity: 0.85;
+            margin-bottom: 16px;
+        }
+
+        /* ===== RESERVATION CTA ===== */
+        .reservation-cta {
+            background: var(--espresso);
+            color: var(--white);
+            text-align: center;
+            padding: 72px 0;
+        }
+        .reservation-cta .section-title {
+            color: var(--white);
+        }
+        .reservation-cta p {
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 560px;
+            margin: 0 auto 32px;
+            font-size: 1.05rem;
+            line-height: 1.8;
+        }
+        .reservation-cta .btn-group {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 16px;
+        }
+
+        /* ===== FOOTER ===== */
+        .footer {
+            background: var(--espresso-light);
+            color: rgba(255, 255, 255, 0.6);
+            padding: 56px 0 32px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .footer-grid {
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr 1fr;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+
+        .footer-brand .logo {
+            color: var(--white);
+            margin-bottom: 8px;
+            display: inline-block;
+        }
+        .footer-brand .tagline {
+            font-size: 0.95rem;
+            font-weight: 300;
+            color: rgba(255, 255, 255, 0.5);
+            margin-bottom: 16px;
+        }
+        .footer-brand .socials {
+            display: flex;
+            gap: 14px;
+        }
+        .footer-brand .socials a {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            background: rgba(255, 255, 255, 0.06);
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1.1rem;
+            transition: var(--transition);
+            border: 1px solid rgba(255, 255, 255, 0.04);
+        }
+        .footer-brand .socials a:hover {
+            background: var(--terracotta);
+            color: var(--white);
+            border-color: var(--terracotta);
+            transform: translateY(-2px);
+        }
+
+        .footer-col h5 {
+            color: var(--white);
+            font-weight: 600;
+            font-size: 0.9rem;
+            margin-bottom: 16px;
+            letter-spacing: 0.5px;
+        }
+        .footer-col a {
+            display: block;
+            padding: 4px 0;
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            transition: color 0.25s;
+        }
+        .footer-col a:hover {
+            color: var(--white);
+        }
+        .footer-col p {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            line-height: 1.7;
+            margin-bottom: 4px;
+        }
+
+        .footer-bottom {
+            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            padding-top: 24px;
+            display: flex;
+            justify-content: space-between;
+            flex-wrap: wrap;
+            gap: 12px;
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.35);
+        }
+
+        /* ===== BACK TO TOP ===== */
+        .back-to-top {
+            position: fixed;
+            bottom: 32px;
+            right: 32px;
+            z-index: 900;
+            width: 48px;
+            height: 48px;
+            border-radius: 50%;
+            background: var(--terracotta);
+            color: var(--white);
+            font-size: 1.2rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            opacity: 0;
+            pointer-events: none;
+            transform: translateY(20px);
+            border: none;
+            cursor: pointer;
+        }
+        .back-to-top.visible {
+            opacity: 1;
+            pointer-events: all;
+            transform: translateY(0);
+        }
+        .back-to-top:hover {
+            background: var(--terracotta-dark);
+            transform: translateY(-4px);
+            box-shadow: var(--shadow-hover);
+        }
+
+        /* ===== SCROLL REVEAL ===== */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: opacity 0.8s ease, transform 0.8s ease;
+        }
+        .reveal.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* ===== RESPONSIVE ===== */
+        @media (max-width: 1024px) {
+            .features-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .instagram-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+
+        @media (max-width: 992px) {
+            .story-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .story-image {
+                aspect-ratio: 16/10;
+            }
+
+            .signature-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+            .signature-image {
+                aspect-ratio: 16/10;
+            }
+            .signature-content p {
+                max-width: 100%;
+            }
+
+            .location-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 32px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            .gallery-grid .gallery-item:nth-child(1) {
+                grid-column: span 2;
+                grid-row: span 2;
+            }
+        }
+
+        @media (max-width: 768px) {
+            :root {
+                --header-height: 64px;
+            }
+
+            .nav-desktop {
+                display: none;
+            }
+            .hamburger {
+                display: flex;
+            }
+
+            .section-padding {
+                padding: 56px 0;
+            }
+            .section-padding-sm {
+                padding: 40px 0;
+            }
+
+            .hero h1 {
+                font-size: clamp(2.2rem, 10vw, 3.4rem);
+            }
+            .hero .container {
+                padding: 40px 24px 80px;
+            }
+
+            .trust-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 16px;
+            }
+
+            .menu-grid {
+                grid-template-columns: 1fr;
+                gap: 8px;
+            }
+
+            .reviews-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 10px;
+            }
+            .gallery-grid .gallery-item:nth-child(1) {
+                grid-column: span 2;
+                grid-row: span 1;
+            }
+
+            .instagram-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 8px;
+            }
+
+            .footer-grid {
+                grid-template-columns: 1fr;
+                gap: 24px;
+            }
+
+            .footer-bottom {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            .back-to-top {
+                bottom: 20px;
+                right: 20px;
+                width: 44px;
+                height: 44px;
+                font-size: 1rem;
+            }
+
+            .hero-buttons .btn {
+                flex: 1 1 100%;
+                justify-content: center;
+            }
+
+            .location-map {
+                min-height: 220px;
+            }
+            .location-map img {
+                min-height: 220px;
+            }
+
+            .lightbox {
+                padding: 20px;
+            }
+            .lightbox-close {
+                top: 16px;
+                right: 16px;
+                width: 44px;
+                height: 44px;
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+            .hero-eyebrow {
+                font-size: 0.7rem;
+                letter-spacing: 2px;
+            }
+            .hero p {
+                font-size: 0.95rem;
+            }
+
+            .trust-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .trust-item .icon {
+                font-size: 1.3rem;
+            }
+            .trust-item strong {
+                font-size: 0.85rem;
+            }
+            .trust-item span {
+                font-size: 0.7rem;
+            }
+
+            .menu-tabs {
+                gap: 6px;
+            }
+            .menu-tab {
+                padding: 8px 18px;
+                font-size: 0.8rem;
+            }
+
+            .features-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 6px;
+            }
+
+            .instagram-grid {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 6px;
+            }
+
+            .section-title {
+                font-size: 1.8rem;
+            }
+
+            .btn {
+                padding: 12px 24px;
+                font-size: 0.85rem;
+                min-height: 48px;
+            }
+
+            .nav-mobile {
+                width: 280px;
+                padding: 72px 24px 32px;
+            }
+
+            .reservation-cta {
+                padding: 48px 0;
+            }
+            .reservation-cta .btn-group {
+                flex-direction: column;
+                align-items: center;
+            }
+            .reservation-cta .btn-group .btn {
+                width: 100%;
+                max-width: 300px;
+            }
+        }
+
+        @media (max-width: 360px) {
+            .hero h1 {
+                font-size: 1.7rem;
+            }
+            .trust-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 8px;
+            }
+            .trust-item {
+                padding: 4px 0;
+            }
+            .menu-item {
+                flex-wrap: wrap;
+            }
+            .menu-item-img {
+                width: 48px;
+                height: 48px;
+            }
+        }
+
+        /* ===== UTILITY ===== */
+        .gap-8 {
+            gap: 8px;
+        }
+        .gap-16 {
+            gap: 16px;
+        }
+        .mt-16 {
+            margin-top: 16px;
+        }
+        .mb-8 {
+            margin-bottom: 8px;
+        }
+        .mb-16 {
+            margin-bottom: 16px;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- ===== HEADER ===== -->
+    <header class="header" id="header" role="banner">
+        <div class="container">
+            <a href="#" class="logo" aria-label="Luna Café home">LUNA<span>.</span></a>
+
+            <nav class="nav-desktop" aria-label="Main navigation">
+                <a href="#home">Home</a>
+                <a href="#story">Our Story</a>
+                <a href="#menu">Menu</a>
+                <a href="#gallery">Gallery</a>
+                <a href="#reviews">Reviews</a>
+                <a href="#contact">Contact</a>
+                <a href="#menu" class="btn btn-primary btn-sm">View Menu</a>
+            </nav>
+
+            <button class="hamburger" id="hamburger" aria-label="Toggle menu" aria-expanded="false">
+                <span></span><span></span><span></span>
+            </button>
+        </div>
+    </header>
+
+    <!-- ===== MOBILE NAV ===== -->
+    <div class="nav-overlay" id="navOverlay"></div>
+    <nav class="nav-mobile" id="navMobile" aria-label="Mobile navigation">
+        <a href="#home">Home</a>
+        <a href="#story">Our Story</a>
+        <a href="#menu">Menu</a>
+        <a href="#gallery">Gallery</a>
+        <a href="#reviews">Reviews</a>
+        <a href="#contact">Contact</a>
+        <a href="#menu" class="btn btn-primary">View Menu</a>
+    </nav>
+
+    <!-- ===== HERO ===== -->
+    <section class="hero" id="home" aria-label="Hero">
+        <div class="hero-bg" role="img" aria-label="Warm coffee shop interior with coffee cup on table"></div>
+        <div class="container">
+            <div class="hero-eyebrow">EST. 2018 · ABBOTTABAD</div>
+            <h1>
+                Good coffee.<br />
+                Good food.<br />
+                Good moments.
+            </h1>
+            <p>
+                A cozy neighborhood café serving carefully crafted coffee, fresh food, and sweet moments — made for slow mornings and good conversations.
+            </p>
+            <div class="hero-buttons">
+                <a href="#menu" class="btn btn-primary">Explore Our Menu</a>
+                <a href="#contact" class="btn btn-outline-light">Find Us</a>
+            </div>
+        </div>
+        <div class="hero-scroll" aria-hidden="true">
+            <span>Scroll</span>
+            <svg viewBox="0 0 24 24" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M7 13l5 5 5-5M7 6l5 5 5-5" />
+            </svg>
+        </div>
+    </section>
+
+    <!-- ===== TRUST STRIP ===== -->
+    <section class="trust-strip" aria-label="Quick information">
+        <div class="container">
+            <div class="trust-grid">
+                <div class="trust-item">
+                    <span class="icon">🧑‍🍳</span>
+                    <strong>Freshly Prepared</strong>
+                    <span>Made fresh every day</span>
+                </div>
+                <div class="trust-item">
+                    <span class="icon">☕</span>
+                    <strong>Specialty Coffee</strong>
+                    <span>Carefully selected beans</span>
+                </div>
+                <div class="trust-item">
+                    <span class="icon">🪑</span>
+                    <strong>Cozy Atmosphere</strong>
+                    <span>A place to slow down</span>
+                </div>
+                <div class="trust-item">
+                    <span class="icon">🕐</span>
+                    <strong>Open Daily</strong>
+                    <span>8:00 AM — 10:00 PM</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== OUR STORY ===== -->
+    <section class="section-padding" id="story" aria-label="Our story">
+        <div class="container">
+            <div class="story-grid">
+                <div class="story-image reveal">
+                    <img
+                    src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=80&auto=format&fit=crop"
+                    alt="Warm and inviting interior of Luna Café with wooden tables and soft lighting"
+                    loading="lazy"
+                    />
+                </div>
+                <div class="story-content reveal">
+                    <span class="section-label">Our Story</span>
+                    <h2 class="section-title">A little place with a lot of heart.</h2>
+                    <p>
+                        Luna Café began with a simple idea: create a place where great coffee, fresh food, and genuine conversations could come together.
+                    </p>
+                    <p>
+                        We believe in quality ingredients, carefully prepared coffee, and a welcoming atmosphere where everyone feels at home. Every cup is brewed with intention, every dish made from scratch.
+                    </p>
+                    <div class="story-signature">— The Luna Team</div>
+                    <a href="#menu" class="story-link">Learn More →</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FEATURED MENU ===== -->
+    <section class="menu-section section-padding" id="menu" aria-label="Menu">
+        <div class="container">
+            <div class="text-center reveal">
+                <span class="section-label">Our Menu</span>
+                <h2 class="section-title">Made with care. Served with love.</h2>
+                <p class="section-sub mx-auto">A few favorites from our kitchen and coffee bar.</p>
+            </div>
+
+            <div class="menu-tabs" role="tablist" aria-label="Menu categories">
+                <button class="menu-tab active" data-category="coffee" role="tab" aria-selected="true">Coffee</button>
+                <button class="menu-tab" data-category="breakfast" role="tab" aria-selected="false">Breakfast</button>
+                <button class="menu-tab" data-category="lunch" role="tab" aria-selected="false">Lunch</button>
+                <button class="menu-tab" data-category="desserts" role="tab" aria-selected="false">Desserts</button>
+            </div>
+
+            <div class="menu-grid" id="menuGrid" role="tabpanel">
+                <!-- Rendered by JavaScript -->
+            </div>
+
+            <div class="menu-footer">
+                <a href="#" class="btn btn-secondary">View Full Menu</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SIGNATURE ===== -->
+    <section class="signature section-padding" id="signature" aria-label="Signature item">
+        <div class="container">
+            <div class="signature-grid">
+                <div class="signature-content reveal">
+                    <span class="section-label">Meet the Luna Latte</span>
+                    <h2 class="section-title">Your new favorite coffee ritual.</h2>
+                    <p>
+                        Our signature espresso blended with silky milk, caramel, and a hint of cinnamon — crafted to make every sip feel like a warm embrace.
+                    </p>
+                    <a href="#" class="btn btn-terracotta">Try the Luna Latte</a>
+                </div>
+                <div class="signature-image reveal">
+                    <img
+                    src="https://images.unsplash.com/photo-1485808191679-5f86510681a2?w=800&q=80&auto=format&fit=crop"
+                    alt="Luna Latte signature coffee with beautiful latte art"
+                    loading="lazy"
+                    />
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== GALLERY ===== -->
+    <section class="section-padding" id="gallery" aria-label="Gallery">
+        <div class="container">
+            <div class="text-center reveal">
+                <span class="section-label">Gallery</span>
+                <h2 class="section-title">A glimpse inside Luna</h2>
+            </div>
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Rendered by JavaScript -->
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== WHY PEOPLE LOVE ===== -->
+    <section class="section-padding" style="background:var(--white);" aria-label="Why people love us">
+        <div class="container">
+            <div class="text-center reveal">
+                <span class="section-label">Why Luna</span>
+                <h2 class="section-title">Why people love Luna</h2>
+            </div>
+            <div class="features-grid">
+                <div class="feature-card reveal">
+                    <span class="icon">🌱</span>
+                    <h4>Quality First</h4>
+                    <p>We choose ingredients carefully and prepare every order with attention.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <span class="icon">🍳</span>
+                    <h4>Made Fresh</h4>
+                    <p>From pastries to sandwiches, freshness comes first.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <span class="icon">🛋️</span>
+                    <h4>A Place to Stay</h4>
+                    <p>Comfortable seating, good music, and a relaxed atmosphere.</p>
+                </div>
+                <div class="feature-card reveal">
+                    <span class="icon">🤝</span>
+                    <h4>Friendly Service</h4>
+                    <p>Because good hospitality matters.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== REVIEWS ===== -->
+    <section class="reviews-section section-padding" id="reviews" aria-label="Customer reviews">
+        <div class="container">
+            <div class="text-center reveal">
+                <span class="section-label">Testimonials</span>
+                <h2 class="section-title">Kind words from our guests</h2>
+            </div>
+            <div class="reviews-grid">
+                <div class="review-card reveal">
+                    <div class="review-stars">★★★★★</div>
+                    <blockquote>“The coffee is excellent, but the atmosphere is what keeps me coming back.”</blockquote>
+                    <div class="author">Sarah M. <small>· Regular</small></div>
+                </div>
+                <div class="review-card reveal">
+                    <div class="review-stars">★★★★★</div>
+                    <blockquote>“Beautiful little café. The pancakes and cappuccino are both amazing.”</blockquote>
+                    <div class="author">Hamza R. <small>· Foodie</small></div>
+                </div>
+                <div class="review-card reveal">
+                    <div class="review-stars">★★★★★</div>
+                    <blockquote>“Perfect place to catch up with friends or get some work done.”</blockquote>
+                    <div class="author">Ayesha K. <small>· Remote worker</small></div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== INSTAGRAM ===== -->
+    <section class="section-padding" style="background:var(--white);" aria-label="Instagram feed">
+        <div class="container">
+            <div class="text-center reveal">
+                <span class="section-label">Follow along</span>
+                <h2 class="section-title">@lunacafe</h2>
+            </div>
+            <div class="instagram-grid" id="instagramGrid">
+                <!-- Rendered by JavaScript -->
+            </div>
+            <div class="instagram-footer">
+                <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" class="btn btn-secondary">Follow Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== LOCATION / CONTACT ===== -->
+    <section class="section-padding" id="contact" aria-label="Contact and location">
+        <div class="container">
+            <div class="location-grid">
+                <div class="location-info reveal">
+                    <span class="section-label">Visit us</span>
+                    <h3>Come say hello</h3>
+                    <div class="address">
+                        <strong>Luna Café</strong><br />
+                        Main Street, Abbottabad, Pakistan
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Phone</span>
+                        <a href="tel:+923001234567">+92 300 1234567</a>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Email</span>
+                        <a href="mailto:hello@lunacafe.example">hello@lunacafe.example</a>
+                    </div>
+                    <div class="detail-row">
+                        <span class="label">Hours</span>
+                        <span>Monday — Sunday · 8:00 AM — 10:00 PM</span>
+                    </div>
+                    <div style="margin-top:20px;">
+                        <a href="#" class="btn btn-secondary btn-sm">Get Directions</a>
+                    </div>
+                </div>
+                <div class="location-map reveal">
+                    <img
+                    src="https://images.unsplash.com/photo-1552566626-52f8b828add9?w=800&q=80&auto=format&fit=crop"
+                    alt="Luna Café exterior on a tree-lined street"
+                    loading="lazy"
+                    />
+                    <div class="map-overlay">
+                        <strong>📍 Luna Café</strong>
+                        <span>Main Street, Abbottabad</span>
+                        <a href="#" class="btn btn-primary btn-sm" style="margin-top:8px;">Get Directions</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== RESERVATION CTA ===== -->
+    <section class="reservation-cta" aria-label="Reservation call to action">
+        <div class="container">
+            <h2 class="section-title">Your table is waiting.</h2>
+            <p>
+                Whether it's coffee with a friend, lunch with the family, or a quiet evening to yourself, there's always a place for you at Luna.
+            </p>
+            <div class="btn-group">
+                <a href="tel:+923001234567" class="btn btn-terracotta">Call Us</a>
+                <a href="https://wa.me/923001234567" target="_blank" rel="noopener noreferrer" class="btn btn-outline-light">Message on WhatsApp</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer class="footer" role="contentinfo">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-brand">
+                    <a href="#" class="logo">LUNA<span>.</span></a>
+                    <div class="tagline">Good coffee. Good food. Good moments.</div>
+                    <div class="socials">
+                        <a href="https://instagram.com" target="_blank" rel="noopener noreferrer" aria-label="Instagram">📷</a>
+                        <a href="https://facebook.com" target="_blank" rel="noopener noreferrer" aria-label="Facebook">👍</a>
+                        <a href="https://tiktok.com" target="_blank" rel="noopener noreferrer" aria-label="TikTok">🎵</a>
+                    </div>
+                </div>
+                <div class="footer-col">
+                    <h5>Navigate</h5>
+                    <a href="#home">Home</a>
+                    <a href="#story">Our Story</a>
+                    <a href="#menu">Menu</a>
+                    <a href="#gallery">Gallery</a>
+                    <a href="#contact">Contact</a>
+                </div>
+                <div class="footer-col">
+                    <h5>Contact</h5>
+                    <p>Main Street, Abbottabad</p>
+                    <p><a href="tel:+923001234567" style="color:rgba(255,255,255,0.5);">+92 300 1234567</a></p>
+                    <p><a href="mailto:hello@lunacafe.example" style="color:rgba(255,255,255,0.5);">hello@lunacafe.example</a></p>
+                </div>
+                <div class="footer-col">
+                    <h5>Hours</h5>
+                    <p>Mon — Sun</p>
+                    <p>8:00 AM — 10:00 PM</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <span>&copy; 2026 Luna Café. All rights reserved.</span>
+                <span>Made with ☕ in Abbottabad</span>
+            </div>
+        </div>
+    </footer>
+
+    <!-- ===== BACK TO TOP ===== -->
+    <button class="back-to-top" id="backToTop" aria-label="Back to top">↑</button>
+
+    <!-- ===== LIGHTBOX ===== -->
+    <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Image viewer">
+        <button class="lightbox-close" id="lightboxClose" aria-label="Close image viewer">✕</button>
+        <img src="" alt="Enlarged view" id="lightboxImg" />
+    </div>
+
+    <!-- ===== JAVASCRIPT ===== -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+
+            // ============================================================
+            // 1. MENU DATA
+            // ============================================================
+            const menuData = {
+                coffee: [
+                    { name: 'Espresso', desc: 'Rich and bold single-origin shot.', price: 'Rs. 350', img: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=120&q=80&auto=format&fit=crop&crop=center' },
+                    { name: 'Cappuccino', desc: 'Perfectly balanced with silky foam.', price: 'Rs. 450', img: 'https://images.unsplash.com/photo-1534778101976-62847782c213?w=120&q=80&auto=format&fit=crop&crop=center' },
+                    { name: 'Caramel Latte', desc: 'Smooth espresso with caramel and steamed milk.', price: 'Rs. 520', img: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=120&q=80&auto=format&fit=crop&crop=center' },
+                    { name: 'Mocha', desc: 'Espresso with rich chocolate and cream.', price: 'Rs. 500', img: 'https://images.unsplash.com/photo-1525808159002-e86e5ac97322?w=120&q=80&auto=format&fit=crop&crop=center' }
+                ],
+                breakfast: [
+                    { name: 'Classic Pancakes', desc: 'Fluffy pancakes with syrup and fresh berries.', price: 'Rs. 650', img: 'https://images.unsplash.com/photo-1528207776546-365bb710ee93?w=120&q=80&auto=format&fit=crop&crop=center' },
+                    { name: 'Avocado Toast', desc: 'Sourdough with smashed avocado and poached egg.', price: 'Rs. 750', img: 'https://images.unsplash.com/photo-1525351484163-7529414344d8?w=120&q=80&auto=format&fit=crop&crop=center' },
+                    { name: 'Egg & Cheese Croissant', desc: 'Buttery croissant with scrambled eggs and cheddar.', price: 'Rs. 600', img: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=120&q=80&auto=format&fit=crop&crop=center' }
+                ],
+                lunch: [
+                    { name: 'Creamy Alfredo Pasta', desc: 'Fettuccine in a rich parmesan cream sauce.', price: 'Rs. 1,050', img: 'https://images.unsplash.com/photo-1645112411342-9669e5d4b5f6?w=120&q=80&auto=format&fit=crop&crop=center' },
+                    { name: 'Grilled Chicken Sandwich', desc: 'Chargrilled chicken with pesto and fresh greens.', price: 'Rs. 850', img: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=120&q=80&auto=format&fit=crop&crop=center' },
+                    { name: 'Luna Chicken Wrap', desc: 'Grilled chicken with avocado, lettuce and lime dressing.', price: 'Rs. 800', img: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=120&q=80&auto=format&fit=crop&crop=center' }
+                ],
+                desserts: [
+                    { name: 'Classic Cheesecake', desc: 'Creamy New York style with berry compote.', price: 'Rs. 550', img: 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=120&q=80&auto=format&fit=crop&crop=center' },
+                    { name: 'Chocolate Cake', desc: 'Rich chocolate layer cake with ganache.', price: 'Rs. 500', img: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=120&q=80&auto=format&fit=crop&crop=center' },
+                    { name: 'Cinnamon Roll', desc: 'Warm roll with cream cheese icing and walnuts.', price: 'Rs. 400', img: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=120&q=80&auto=format&fit=crop&crop=center' }
+                ]
+            };
+
+            // ============================================================
+            // 2. RENDER MENU
+            // ============================================================
+            const menuGrid = document.getElementById('menuGrid');
+            let currentCategory = 'coffee';
+
+            function renderMenu(category) {
+                const items = menuData[category] || [];
+                menuGrid.innerHTML = items.map(item => `
+                        <div class="menu-item">
+                          ${item.img ? `<div class="menu-item-img"><img src="${item.img}" alt="${item.name}" loading="lazy" /></div>` : ''}
+                          <div class="menu-item-info">
+                            <div class="name">
+                              <span>${item.name}</span>
+                              <span class="price">${item.price}</span>
+                            </div>
+                            <div class="desc">${item.desc}</div>
+                          </div>
+                        </div>
+                      `).join('');
+            }
+
+            // Menu tabs
+            const tabs = document.querySelectorAll('.menu-tab');
+            tabs.forEach(tab => {
+                tab.addEventListener('click', function() {
+                    tabs.forEach(t => { t.classList.remove('active');
+                        t.setAttribute('aria-selected', 'false'); });
+                    this.classList.add('active');
+                    this.setAttribute('aria-selected', 'true');
+                    currentCategory = this.dataset.category;
+                    renderMenu(currentCategory);
+                });
+            });
+
+            // Initial render
+            renderMenu('coffee');
+
+            // ============================================================
+            // 3. GALLERY
+            // ============================================================
+            const galleryImages = [
+                { src: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&q=80&auto=format&fit=crop', alt: 'Fresh pastries and croissants' },
+                { src: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&q=80&auto=format&fit=crop', alt: 'Cozy café interior with warm lighting' },
+                { src: 'https://images.unsplash.com/photo-1455477331475-3a7f5b7a4c5f?w=600&q=80&auto=format&fit=crop', alt: 'Barista preparing coffee' },
+                { src: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80&auto=format&fit=crop', alt: 'Pouring a fresh cup of coffee' },
+                { src: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80&auto=format&fit=crop', alt: 'Delicious meal on a plate' },
+                { src: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80&auto=format&fit=crop', alt: 'Restaurant interior with wooden tables' },
+                { src: 'https://images.unsplash.com/photo-1541167760496-1628856ab772?w=600&q=80&auto=format&fit=crop', alt: 'Coffee beans and brewing equipment' },
+                { src: 'https://images.unsplash.com/photo-1552566626-52f8b828add9?w=600&q=80&auto=format&fit=crop', alt: 'Café exterior with outdoor seating' }
+            ];
+
+            const galleryGrid = document.getElementById('galleryGrid');
+            galleryGrid.innerHTML = galleryImages.map(img => `
+                    <div class="gallery-item" data-src="${img.src}" data-alt="${img.alt}">
+                      <img src="${img.src}" alt="${img.alt}" loading="lazy" />
+                    </div>
+                  `).join('');
+
+            // ============================================================
+            // 4. LIGHTBOX
+            // ============================================================
+            const lightbox = document.getElementById('lightbox');
+            const lightboxImg = document.getElementById('lightboxImg');
+            const lightboxClose = document.getElementById('lightboxClose');
+
+            galleryGrid.addEventListener('click', function(e) {
+                const item = e.target.closest('.gallery-item');
+                if (!item) return;
+                const src = item.dataset.src;
+                const alt = item.dataset.alt || 'Gallery image';
+                lightboxImg.src = src;
+                lightboxImg.alt = alt;
+                lightbox.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+
+            function closeLightbox() {
+                lightbox.classList.remove('active');
+                document.body.style.overflow = '';
+            }
+
+            lightboxClose.addEventListener('click', closeLightbox);
+            lightbox.addEventListener('click', function(e) {
+                if (e.target === this) closeLightbox();
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape') closeLightbox();
+            });
+
+            // ============================================================
+            // 5. INSTAGRAM
+            // ============================================================
+            const instaImages = [
+                'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&q=80&auto=format&fit=crop&crop=center',
+                'https://images.unsplash.com/photo-1485808191679-5f86510681a2?w=400&q=80&auto=format&fit=crop&crop=center',
+                'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=80&auto=format&fit=crop&crop=center',
+                'https://images.unsplash.com/photo-1455477331475-3a7f5b7a4c5f?w=400&q=80&auto=format&fit=crop&crop=center',
+                'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&q=80&auto=format&fit=crop&crop=center',
+                'https://images.unsplash.com/photo-1541167760496-1628856ab772?w=400&q=80&auto=format&fit=crop&crop=center'
+            ];
+
+            const instagramGrid = document.getElementById('instagramGrid');
+            instagramGrid.innerHTML = instaImages.map(src => `
+                    <div class="instagram-item">
+                      <img src="${src}" alt="Luna Café Instagram" loading="lazy" />
+                    </div>
+                  `).join('');
+
+            // ============================================================
+            // 6. NAVBAR SCROLL
+            // ============================================================
+            const header = document.getElementById('header');
+            let lastScroll = 0;
+
+            window.addEventListener('scroll', function() {
+                const currentScroll = window.pageYOffset || document.documentElement.scrollTop;
+                if (currentScroll > 40) {
+                    header.classList.add('scrolled');
+                } else {
+                    header.classList.remove('scrolled');
+                }
+                lastScroll = currentScroll;
+
+                // Back to top
+                const backBtn = document.getElementById('backToTop');
+                if (currentScroll > 600) {
+                    backBtn.classList.add('visible');
+                } else {
+                    backBtn.classList.remove('visible');
+                }
+            });
+
+            // ============================================================
+            // 7. BACK TO TOP
+            // ============================================================
+            document.getElementById('backToTop').addEventListener('click', function() {
+                window.scrollTo({ top: 0, behavior: 'smooth' });
+            });
+
+            // ============================================================
+            // 8. MOBILE MENU
+            // ============================================================
+            const hamburger = document.getElementById('hamburger');
+            const navMobile = document.getElementById('navMobile');
+            const navOverlay = document.getElementById('navOverlay');
+
+            function toggleMenu(open) {
+                const isOpen = open !== undefined ? open : !navMobile.classList.contains('open');
+                navMobile.classList.toggle('open', isOpen);
+                navOverlay.classList.toggle('active', isOpen);
+                hamburger.classList.toggle('active', isOpen);
+                hamburger.setAttribute('aria-expanded', isOpen);
+                document.body.style.overflow = isOpen ? 'hidden' : '';
+            }
+
+            hamburger.addEventListener('click', () => toggleMenu());
+            navOverlay.addEventListener('click', () => toggleMenu(false));
+
+            // Close menu on link click
+            navMobile.querySelectorAll('a').forEach(link => {
+                link.addEventListener('click', () => toggleMenu(false));
+            });
+
+            // Close on Escape
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && navMobile.classList.contains('open')) {
+                    toggleMenu(false);
+                }
+            });
+
+            // ============================================================
+            // 9. SCROLL REVEAL (Intersection Observer)
+            // ============================================================
+            const revealEls = document.querySelectorAll('.reveal');
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                    }
+                });
+            }, {
+                threshold: 0.15,
+                rootMargin: '0px 0px -40px 0px'
+            });
+
+            revealEls.forEach(el => observer.observe(el));
+
+            // ============================================================
+            // 10. SMOOTH ANCHOR SCROLL (with offset)
+            // ============================================================
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e) {
+                    const targetId = this.getAttribute('href');
+                    if (targetId === '#') return;
+                    const target = document.querySelector(targetId);
+                    if (target) {
+                        e.preventDefault();
+                        const offset = 80;
+                        const top = target.getBoundingClientRect().top + window.pageYOffset - offset;
+                        window.scrollTo({ top, behavior: 'smooth' });
+                    }
+                });
+            });
+
+            // ============================================================
+            // 11. CONSOLE CLEAN
+            // ============================================================
+            console.log('☕ Luna Café — Good coffee. Good food. Good moments.');
+        });
+    </script>
+
+</body>
+</html>
