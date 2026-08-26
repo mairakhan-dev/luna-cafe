@@ -10,7 +10,9 @@
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
     <style>
-        /* ===== CSS VARIABLES ===== */
+        /* ============================================================
+                   CSS VARIABLES & RESET
+                   ============================================================ */
         :root {
             --espresso: #2C1810;
             --espresso-light: #3C2415;
@@ -24,17 +26,16 @@
             --text-muted: #6B5A4E;
             --white: #FFFFFF;
             --shadow: 0 8px 32px rgba(44, 24, 16, 0.10);
-            --shadow-hover: 0 12px 40px rgba(44, 24, 16, 0.18);
-            --radius: 12px;
-            --radius-sm: 6px;
-            --transition: 0.35s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            --shadow-hover: 0 16px 48px rgba(44, 24, 16, 0.18);
+            --radius: 14px;
+            --radius-sm: 8px;
+            --transition: 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
             --font-serif: 'Playfair Display', Georgia, serif;
             --font-sans: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
             --max-width: 1200px;
             --header-height: 72px;
         }
 
-        /* ===== RESET & BASE ===== */
         *,
         *::before,
         *::after {
@@ -42,12 +43,10 @@
             padding: 0;
             box-sizing: border-box;
         }
-
         html {
             scroll-behavior: smooth;
             -webkit-font-smoothing: antialiased;
         }
-
         body {
             font-family: var(--font-sans);
             color: var(--text-dark);
@@ -55,18 +54,15 @@
             line-height: 1.6;
             overflow-x: hidden;
         }
-
         img {
             display: block;
             max-width: 100%;
             height: auto;
         }
-
         a {
             color: inherit;
             text-decoration: none;
         }
-
         button {
             cursor: pointer;
             font-family: inherit;
@@ -74,7 +70,6 @@
             background: none;
             color: inherit;
         }
-
         ul {
             list-style: none;
         }
@@ -85,58 +80,64 @@
             margin: 0 auto;
             padding: 0 24px;
         }
-
         .section-padding {
             padding: 80px 0;
         }
-
-        .section-padding-sm {
-            padding: 56px 0;
-        }
-
         .section-label {
             display: inline-block;
-            font-size: 0.75rem;
+            font-size: 0.7rem;
             font-weight: 600;
-            letter-spacing: 2px;
+            letter-spacing: 2.5px;
             text-transform: uppercase;
             color: var(--terracotta);
             margin-bottom: 12px;
+            position: relative;
         }
-
+        .section-label::after {
+            content: '';
+            display: block;
+            width: 30px;
+            height: 2px;
+            background: var(--terracotta);
+            margin-top: 6px;
+        }
+        .section-label.centered::after {
+            margin-left: auto;
+            margin-right: auto;
+        }
         .section-title {
             font-family: var(--font-serif);
-            font-size: clamp(2rem, 4vw, 3.2rem);
+            font-size: clamp(2rem, 4vw, 3.4rem);
             font-weight: 700;
-            line-height: 1.2;
+            line-height: 1.15;
             color: var(--espresso);
             margin-bottom: 16px;
         }
-
         .section-sub {
-            font-size: 1.1rem;
+            font-size: 1.05rem;
             color: var(--text-muted);
             max-width: 600px;
             font-weight: 300;
-            line-height: 1.7;
+            line-height: 1.8;
         }
-
         .text-center {
             text-align: center;
         }
-
         .mx-auto {
             margin-left: auto;
             margin-right: auto;
         }
 
-        /* ===== BUTTONS ===== */
+        /* ============================================================
+                   BUTTONS
+                   ============================================================ */
         .btn {
             display: inline-flex;
             align-items: center;
             justify-content: center;
-            padding: 14px 32px;
-            font-size: 0.95rem;
+            gap: 8px;
+            padding: 14px 34px;
+            font-size: 0.9rem;
             font-weight: 600;
             border-radius: 50px;
             transition: var(--transition);
@@ -145,20 +146,32 @@
             font-family: var(--font-sans);
             line-height: 1;
             min-height: 54px;
+            position: relative;
+            overflow: hidden;
         }
-
+        .btn::after {
+            content: '';
+            position: absolute;
+            inset: 0;
+            background: rgba(255, 255, 255, 0.15);
+            transform: scaleX(0);
+            transform-origin: right;
+            transition: transform 0.4s ease;
+            border-radius: 50px;
+        }
+        .btn:hover::after {
+            transform: scaleX(1);
+            transform-origin: left;
+        }
         .btn-primary {
             background: var(--espresso);
             color: var(--white);
             border-color: var(--espresso);
         }
         .btn-primary:hover {
-            background: var(--espresso-light);
-            border-color: var(--espresso-light);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
             box-shadow: var(--shadow-hover);
         }
-
         .btn-secondary {
             background: transparent;
             color: var(--espresso);
@@ -167,10 +180,9 @@
         .btn-secondary:hover {
             background: var(--espresso);
             color: var(--white);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
             box-shadow: var(--shadow-hover);
         }
-
         .btn-terracotta {
             background: var(--terracotta);
             color: var(--white);
@@ -179,29 +191,40 @@
         .btn-terracotta:hover {
             background: var(--terracotta-dark);
             border-color: var(--terracotta-dark);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
             box-shadow: var(--shadow-hover);
         }
-
         .btn-outline-light {
             background: transparent;
             color: var(--white);
-            border-color: rgba(255, 255, 255, 0.5);
+            border-color: rgba(255, 255, 255, 0.4);
         }
         .btn-outline-light:hover {
             background: var(--white);
             color: var(--espresso);
             border-color: var(--white);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
         }
-
         .btn-sm {
             padding: 10px 24px;
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             min-height: 44px;
         }
+        .btn-gold {
+            background: #C9A96E;
+            color: var(--white);
+            border-color: #C9A96E;
+        }
+        .btn-gold:hover {
+            background: #B89A5E;
+            border-color: #B89A5E;
+            transform: translateY(-3px);
+            box-shadow: var(--shadow-hover);
+        }
 
-        /* ===== HEADER / NAV ===== */
+        /* ============================================================
+                   HEADER
+                   ============================================================ */
         .header {
             position: fixed;
             top: 0;
@@ -211,17 +234,15 @@
             height: var(--header-height);
             display: flex;
             align-items: center;
-            transition: background 0.4s ease, box-shadow 0.4s ease, backdrop-filter 0.4s ease;
+            transition: background 0.4s, box-shadow 0.4s, backdrop-filter 0.4s;
             background: transparent;
         }
-
         .header.scrolled {
-            background: rgba(250, 246, 240, 0.92);
-            backdrop-filter: blur(12px);
-            -webkit-backdrop-filter: blur(12px);
-            box-shadow: 0 1px 20px rgba(44, 24, 16, 0.06);
+            background: rgba(250, 246, 240, 0.94);
+            backdrop-filter: blur(14px);
+            -webkit-backdrop-filter: blur(14px);
+            box-shadow: 0 2px 24px rgba(44, 24, 16, 0.06);
         }
-
         .header .container {
             display: flex;
             align-items: center;
@@ -231,9 +252,9 @@
 
         .logo {
             font-family: var(--font-serif);
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             font-weight: 700;
-            letter-spacing: 1px;
+            letter-spacing: 0.5px;
             color: var(--espresso);
             flex-shrink: 0;
         }
@@ -244,15 +265,15 @@
         .nav-desktop {
             display: flex;
             align-items: center;
-            gap: 32px;
+            gap: 28px;
         }
-
         .nav-desktop a {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             font-weight: 500;
             color: var(--text-dark);
             transition: color 0.25s;
             position: relative;
+            letter-spacing: 0.2px;
         }
         .nav-desktop a::after {
             content: '';
@@ -262,7 +283,7 @@
             width: 0;
             height: 2px;
             background: var(--terracotta);
-            transition: width 0.3s ease;
+            transition: width 0.3s;
         }
         .nav-desktop a:hover::after,
         .nav-desktop a:focus::after {
@@ -271,9 +292,8 @@
         .nav-desktop a:hover {
             color: var(--terracotta);
         }
-
         .nav-desktop .btn {
-            margin-left: 8px;
+            margin-left: 4px;
         }
 
         .hamburger {
@@ -312,31 +332,30 @@
             height: 100vh;
             background: var(--warm-offwhite);
             padding: 80px 32px 40px;
-            transition: right 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-            box-shadow: -8px 0 40px rgba(44, 24, 16, 0.08);
+            transition: right 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+            box-shadow: -8px 0 48px rgba(44, 24, 16, 0.08);
             z-index: 999;
             display: flex;
             flex-direction: column;
-            gap: 6px;
+            gap: 4px;
             overflow-y: auto;
         }
         .nav-mobile.open {
             right: 0;
         }
-
         .nav-mobile a {
             font-size: 1.1rem;
             font-weight: 500;
-            padding: 12px 0;
+            padding: 14px 0;
             color: var(--text-dark);
-            border-bottom: 1px solid rgba(44, 24, 16, 0.06);
+            border-bottom: 1px solid rgba(44, 24, 16, 0.05);
             transition: color 0.25s;
         }
         .nav-mobile a:hover {
             color: var(--terracotta);
         }
         .nav-mobile .btn {
-            margin-top: 16px;
+            margin-top: 20px;
             width: 100%;
             justify-content: center;
         }
@@ -344,18 +363,20 @@
         .nav-overlay {
             position: fixed;
             inset: 0;
-            background: rgba(44, 24, 16, 0.3);
+            background: rgba(44, 24, 16, 0.35);
             z-index: 998;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.4s ease;
+            transition: opacity 0.4s;
         }
         .nav-overlay.active {
             opacity: 1;
             pointer-events: all;
         }
 
-        /* ===== HERO ===== */
+        /* ============================================================
+                   HERO
+                   ============================================================ */
         .hero {
             min-height: 100vh;
             display: flex;
@@ -363,8 +384,8 @@
             position: relative;
             background: var(--espresso);
             padding-top: var(--header-height);
+            overflow: hidden;
         }
-
         .hero-bg {
             position: absolute;
             inset: 0;
@@ -372,48 +393,52 @@
             background-size: cover;
             background-position: center 30%;
             background-repeat: no-repeat;
-            filter: brightness(0.45) saturate(1.05);
+            filter: brightness(0.4) saturate(1.05);
             z-index: 0;
+            transform: scale(1.05);
+            transition: transform 8s ease;
         }
-
+        .hero:hover .hero-bg {
+            transform: scale(1);
+        }
         .hero .container {
             position: relative;
             z-index: 1;
-            padding: 60px 24px 80px;
+            padding: 60px 24px 100px;
             max-width: 780px;
         }
-
         .hero-eyebrow {
-            font-size: 0.8rem;
+            font-size: 0.7rem;
             font-weight: 500;
-            letter-spacing: 3px;
+            letter-spacing: 4px;
             text-transform: uppercase;
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.5);
             margin-bottom: 20px;
+            font-family: var(--font-sans);
         }
-
         .hero h1 {
             font-family: var(--font-serif);
             font-size: clamp(2.8rem, 8vw, 5.2rem);
             font-weight: 700;
-            line-height: 1.08;
+            line-height: 1.05;
             color: var(--white);
             margin-bottom: 20px;
         }
-
+        .hero h1 .highlight {
+            color: var(--terracotta-light);
+        }
         .hero p {
             font-size: clamp(1rem, 1.4vw, 1.2rem);
-            color: rgba(255, 255, 255, 0.75);
-            max-width: 540px;
-            line-height: 1.8;
+            color: rgba(255, 255, 255, 0.7);
+            max-width: 520px;
+            line-height: 1.9;
             margin-bottom: 36px;
             font-weight: 300;
         }
-
         .hero-buttons {
             display: flex;
             flex-wrap: wrap;
-            gap: 16px;
+            gap: 14px;
         }
 
         .hero-scroll {
@@ -421,15 +446,15 @@
             bottom: 32px;
             left: 50%;
             transform: translateX(-50%);
-            color: rgba(255, 255, 255, 0.35);
-            font-size: 0.75rem;
-            letter-spacing: 2px;
+            color: rgba(255, 255, 255, 0.3);
+            font-size: 0.65rem;
+            letter-spacing: 3px;
             text-transform: uppercase;
             display: flex;
             flex-direction: column;
             align-items: center;
             gap: 8px;
-            animation: bounce-down 2.4s ease-in-out infinite;
+            animation: bounce-down 2.6s ease-in-out infinite;
             font-weight: 400;
             z-index: 1;
         }
@@ -447,24 +472,24 @@
                 transform: translateX(-50%) translateY(0);
             }
             50% {
-                transform: translateX(-50%) translateY(8px);
+                transform: translateX(-50%) translateY(10px);
             }
         }
 
-        /* ===== TRUST STRIP ===== */
+        /* ============================================================
+                   TRUST STRIP
+                   ============================================================ */
         .trust-strip {
             background: var(--white);
-            border-bottom: 1px solid rgba(44, 24, 16, 0.05);
             padding: 28px 0;
+            border-bottom: 1px solid rgba(44, 24, 16, 0.04);
         }
-
         .trust-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
             gap: 20px;
             text-align: center;
         }
-
         .trust-item {
             display: flex;
             flex-direction: column;
@@ -473,27 +498,57 @@
         }
         .trust-item svg {
             margin-bottom: 4px;
-            opacity: 0.7;
+            opacity: 0.6;
         }
         .trust-item strong {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 600;
             color: var(--espresso);
         }
         .trust-item span {
-            font-size: 0.8rem;
+            font-size: 0.75rem;
             color: var(--text-muted);
             font-weight: 400;
         }
 
-        /* ===== OUR STORY ===== */
+        /* ============================================================
+                   STATS
+                   ============================================================ */
+        .stats-section {
+            background: var(--espresso);
+            color: var(--white);
+            padding: 56px 0;
+        }
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            text-align: center;
+        }
+        .stat-item .number {
+            font-family: var(--font-serif);
+            font-size: 3.2rem;
+            font-weight: 700;
+            display: block;
+            line-height: 1.1;
+        }
+        .stat-item .label {
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.5);
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-top: 4px;
+        }
+
+        /* ============================================================
+                   STORY
+                   ============================================================ */
         .story-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
             align-items: center;
         }
-
         .story-image {
             border-radius: var(--radius);
             overflow: hidden;
@@ -505,23 +560,16 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s ease;
+            transition: transform 0.8s ease;
         }
         .story-image:hover img {
-            transform: scale(1.02);
-        }
-
-        .story-content .section-label {
-            margin-bottom: 8px;
-        }
-        .story-content .section-title {
-            margin-bottom: 20px;
+            transform: scale(1.03);
         }
         .story-content p {
             color: var(--text-muted);
             margin-bottom: 16px;
             font-size: 1rem;
-            line-height: 1.8;
+            line-height: 1.9;
         }
         .story-signature {
             font-family: var(--font-serif);
@@ -531,24 +579,28 @@
             margin-top: 8px;
         }
         .story-link {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
             margin-top: 16px;
             font-weight: 600;
             color: var(--terracotta);
             border-bottom: 2px solid var(--terracotta);
-            padding-bottom: 2px;
+            padding-bottom: 4px;
             transition: var(--transition);
         }
         .story-link:hover {
             color: var(--terracotta-dark);
             border-color: var(--terracotta-dark);
+            gap: 12px;
         }
 
-        /* ===== MENU ===== */
+        /* ============================================================
+                   MENU
+                   ============================================================ */
         .menu-section {
             background: var(--white);
         }
-
         .menu-tabs {
             display: flex;
             justify-content: center;
@@ -559,12 +611,13 @@
         .menu-tab {
             padding: 10px 28px;
             font-weight: 500;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             border-radius: 50px;
             background: transparent;
             color: var(--text-muted);
-            border: 1px solid rgba(44, 24, 16, 0.1);
+            border: 1px solid rgba(44, 24, 16, 0.08);
             transition: var(--transition);
+            font-family: var(--font-sans);
         }
         .menu-tab:hover {
             border-color: var(--terracotta);
@@ -579,24 +632,23 @@
         .menu-grid {
             display: grid;
             grid-template-columns: repeat(2, 1fr);
-            gap: 24px 40px;
+            gap: 20px 40px;
         }
-
         .menu-item {
             display: flex;
             gap: 16px;
-            align-items: flex-start;
-            padding: 16px 0;
-            border-bottom: 1px solid rgba(44, 24, 16, 0.05);
+            align-items: center;
+            padding: 14px 0;
+            border-bottom: 1px solid rgba(44, 24, 16, 0.04);
             transition: var(--transition);
         }
         .menu-item:hover {
             border-bottom-color: var(--terracotta);
+            padding-left: 8px;
         }
-
         .menu-item-img {
-            width: 60px;
-            height: 60px;
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
             overflow: hidden;
             flex-shrink: 0;
@@ -607,14 +659,13 @@
             height: 100%;
             object-fit: cover;
         }
-
         .menu-item-info {
             flex: 1;
             min-width: 0;
         }
         .menu-item-info .name {
             font-weight: 600;
-            font-size: 1rem;
+            font-size: 0.95rem;
             color: var(--espresso);
             display: flex;
             justify-content: space-between;
@@ -624,40 +675,37 @@
         .menu-item-info .name .price {
             font-weight: 600;
             color: var(--terracotta);
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             white-space: nowrap;
         }
         .menu-item-info .desc {
-            font-size: 0.85rem;
+            font-size: 0.8rem;
             color: var(--text-muted);
             margin-top: 2px;
             line-height: 1.5;
         }
-
         .menu-footer {
             text-align: center;
             margin-top: 44px;
         }
 
-        /* ===== SIGNATURE ===== */
+        /* ============================================================
+                   SIGNATURE
+                   ============================================================ */
         .signature {
             background: var(--espresso);
             color: var(--white);
-            position: relative;
-            overflow: hidden;
         }
-
         .signature-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 60px;
             align-items: center;
         }
-
         .signature-image {
             border-radius: var(--radius);
             overflow: hidden;
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 24px 64px rgba(0, 0, 0, 0.4);
             aspect-ratio: 4/3;
             background: var(--espresso-light);
         }
@@ -665,14 +713,16 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.6s ease;
+            transition: transform 0.8s ease;
         }
         .signature-image:hover img {
-            transform: scale(1.02);
+            transform: scale(1.03);
         }
-
         .signature-content .section-label {
             color: var(--terracotta-light);
+        }
+        .signature-content .section-label::after {
+            background: var(--terracotta-light);
         }
         .signature-content .section-title {
             color: var(--white);
@@ -681,19 +731,73 @@
         .signature-content p {
             color: rgba(255, 255, 255, 0.7);
             font-size: 1.05rem;
-            line-height: 1.8;
+            line-height: 1.9;
             margin-bottom: 28px;
             max-width: 480px;
         }
 
-        /* ===== GALLERY ===== */
+        /* ============================================================
+                   SPECIALS
+                   ============================================================ */
+        .specials-section {
+            background: var(--warm-offwhite);
+        }
+        .specials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 32px;
+        }
+        .special-card {
+            background: var(--white);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 4px 16px rgba(44, 24, 16, 0.04);
+            transition: var(--transition);
+        }
+        .special-card:hover {
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
+        }
+        .special-card img {
+            width: 100%;
+            aspect-ratio: 16/10;
+            object-fit: cover;
+        }
+        .special-card .content {
+            padding: 20px 24px 24px;
+        }
+        .special-card .content .tag {
+            font-size: 0.6rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--terracotta);
+            background: rgba(198, 122, 92, 0.1);
+            padding: 2px 12px;
+            border-radius: 50px;
+            display: inline-block;
+        }
+        .special-card .content h4 {
+            font-family: var(--font-serif);
+            font-size: 1.15rem;
+            margin: 8px 0 6px;
+        }
+        .special-card .content p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ============================================================
+                   GALLERY — Clean grid with fewer, reliable images
+                   ============================================================ */
         .gallery-grid {
             display: grid;
-            grid-template-columns: repeat(4, 1fr);
+            grid-template-columns: repeat(3, 1fr);
             gap: 16px;
             margin-top: 32px;
         }
-
         .gallery-grid .gallery-item {
             aspect-ratio: 1;
             overflow: hidden;
@@ -702,6 +806,22 @@
             background: var(--beige);
             transition: var(--transition);
             box-shadow: 0 2px 8px rgba(44, 24, 16, 0.04);
+            position: relative;
+        }
+        .gallery-grid .gallery-item::after {
+            content: '🔍';
+            position: absolute;
+            inset: 0;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2rem;
+            background: rgba(44, 24, 16, 0.3);
+            opacity: 0;
+            transition: opacity 0.4s;
+        }
+        .gallery-grid .gallery-item:hover::after {
+            opacity: 1;
         }
         .gallery-grid .gallery-item:hover {
             transform: scale(1.02);
@@ -712,30 +832,32 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
+            transition: transform 0.6s ease;
         }
         .gallery-grid .gallery-item:hover img {
-            transform: scale(1.05);
+            transform: scale(1.06);
         }
-        .gallery-grid .gallery-item:nth-child(1) {
+        .gallery-grid .gallery-item:first-child {
             grid-column: span 2;
             grid-row: span 2;
         }
 
-        /* ===== LIGHTBOX ===== */
+        /* ============================================================
+                   LIGHTBOX
+                   ============================================================ */
         .lightbox {
             position: fixed;
             inset: 0;
             z-index: 2000;
-            background: rgba(44, 24, 16, 0.92);
-            backdrop-filter: blur(8px);
-            -webkit-backdrop-filter: blur(8px);
+            background: rgba(44, 24, 16, 0.94);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
             display: flex;
             align-items: center;
             justify-content: center;
             opacity: 0;
             pointer-events: none;
-            transition: opacity 0.4s ease;
+            transition: opacity 0.4s;
             padding: 40px;
         }
         .lightbox.active {
@@ -747,44 +869,43 @@
             max-height: 85vh;
             object-fit: contain;
             border-radius: var(--radius-sm);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
-            transform: scale(0.95);
-            transition: transform 0.4s ease;
+            box-shadow: 0 24px 80px rgba(0, 0, 0, 0.6);
+            transform: scale(0.92);
+            transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
         }
         .lightbox.active img {
             transform: scale(1);
         }
         .lightbox-close {
             position: absolute;
-            top: 24px;
-            right: 32px;
-            background: rgba(255, 255, 255, 0.1);
-            border: none;
+            top: 28px;
+            right: 36px;
+            background: rgba(255, 255, 255, 0.08);
             color: var(--white);
-            font-size: 2.2rem;
-            width: 56px;
-            height: 56px;
+            font-size: 2rem;
+            width: 52px;
+            height: 52px;
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             transition: var(--transition);
-            backdrop-filter: blur(4px);
             border: 1px solid rgba(255, 255, 255, 0.1);
         }
         .lightbox-close:hover {
-            background: rgba(255, 255, 255, 0.2);
+            background: rgba(255, 255, 255, 0.18);
             transform: rotate(90deg);
         }
 
-        /* ===== FEATURES ===== */
+        /* ============================================================
+                   FEATURES
+                   ============================================================ */
         .features-grid {
             display: grid;
             grid-template-columns: repeat(4, 1fr);
-            gap: 32px;
+            gap: 28px;
             margin-top: 24px;
         }
-
         .feature-card {
             text-align: center;
             padding: 32px 20px 28px;
@@ -795,8 +916,8 @@
             border: 1px solid rgba(44, 24, 16, 0.04);
         }
         .feature-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow);
+            transform: translateY(-8px);
+            box-shadow: var(--shadow-hover);
             border-color: rgba(198, 122, 92, 0.15);
         }
         .feature-card svg {
@@ -804,125 +925,304 @@
         }
         .feature-card h4 {
             font-family: var(--font-serif);
-            font-size: 1.15rem;
+            font-size: 1.1rem;
             font-weight: 600;
             color: var(--espresso);
-            margin-bottom: 8px;
+            margin-bottom: 6px;
         }
         .feature-card p {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-muted);
             line-height: 1.6;
         }
 
-        /* ===== REVIEWS ===== */
+        /* ============================================================
+                   REVIEWS — Carousel
+                   ============================================================ */
         .reviews-section {
             background: var(--cream);
         }
-
-        .reviews-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 28px;
-            margin-top: 32px;
+        .reviews-carousel {
+            position: relative;
+            max-width: 700px;
+            margin: 32px auto 0;
+            overflow: hidden;
         }
-
-        .review-card {
-            background: var(--white);
-            padding: 32px 28px;
-            border-radius: var(--radius);
-            box-shadow: 0 2px 12px rgba(44, 24, 16, 0.04);
-            transition: var(--transition);
-            border: 1px solid rgba(44, 24, 16, 0.04);
+        .reviews-track {
+            display: flex;
+            transition: transform 0.6s cubic-bezier(0.22, 1, 0.36, 1);
         }
-        .review-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow);
+        .review-slide {
+            flex: 0 0 100%;
+            padding: 0 20px;
+            text-align: center;
         }
-
-        .review-stars {
+        .review-slide .stars {
             color: #E8A838;
-            font-size: 1rem;
-            letter-spacing: 2px;
+            font-size: 1.2rem;
+            letter-spacing: 3px;
             margin-bottom: 12px;
         }
-        .review-card blockquote {
-            font-size: 1rem;
-            line-height: 1.7;
+        .review-slide blockquote {
+            font-size: 1.1rem;
+            line-height: 1.8;
             color: var(--text-dark);
             font-style: italic;
             margin-bottom: 12px;
+            font-weight: 400;
         }
-        .review-card .author {
+        .review-slide .author {
             font-weight: 600;
             color: var(--espresso);
-            font-size: 0.9rem;
+            font-size: 0.95rem;
         }
-        .review-card .author small {
+        .review-slide .author small {
             font-weight: 400;
             color: var(--text-muted);
             font-size: 0.8rem;
         }
 
-        /* ===== INSTAGRAM ===== */
-        .instagram-grid {
-            display: grid;
-            grid-template-columns: repeat(6, 1fr);
-            gap: 12px;
-            margin-top: 28px;
+        .review-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 24px;
+        }
+        .review-dots button {
+            width: 10px;
+            height: 10px;
+            border-radius: 50%;
+            background: rgba(44, 24, 16, 0.2);
+            transition: var(--transition);
+            padding: 0;
+        }
+        .review-dots button.active {
+            background: var(--terracotta);
+            width: 28px;
+            border-radius: 6px;
+        }
+        .review-dots button:hover {
+            background: var(--terracotta);
         }
 
-        .instagram-item {
-            aspect-ratio: 1;
+        /* ============================================================
+                   RESERVATION FORM
+                   ============================================================ */
+        .reservation-form-section {
+            background: var(--white);
+        }
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 50px;
+            align-items: start;
+        }
+        .form-info h3 {
+            font-family: var(--font-serif);
+            font-size: 1.6rem;
+            color: var(--espresso);
+            margin-bottom: 8px;
+        }
+        .form-info p {
+            color: var(--text-muted);
+            line-height: 1.8;
+            margin-bottom: 20px;
+        }
+        .form-info .image-placeholder {
+            border-radius: var(--radius);
             overflow: hidden;
-            border-radius: var(--radius-sm);
-            background: var(--beige);
-            transition: var(--transition);
-            cursor: pointer;
-        }
-        .instagram-item:hover {
-            transform: scale(1.04);
             box-shadow: var(--shadow);
-            z-index: 2;
+            aspect-ratio: 4/3;
+            background: var(--beige);
         }
-        .instagram-item img {
+        .form-info .image-placeholder img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        .instagram-item:hover img {
-            transform: scale(1.06);
         }
 
-        .instagram-footer {
+        .reservation-form {
+            background: var(--warm-offwhite);
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+        .reservation-form h4 {
+            font-family: var(--font-serif);
+            font-size: 1.3rem;
+            margin-bottom: 4px;
+        }
+        .reservation-form .sub {
+            color: var(--text-muted);
+            font-size: 0.9rem;
+            margin-bottom: 24px;
+        }
+        .form-group {
+            margin-bottom: 18px;
+        }
+        .form-group label {
+            display: block;
+            font-size: 0.8rem;
+            font-weight: 600;
+            color: var(--espresso);
+            margin-bottom: 4px;
+            letter-spacing: 0.3px;
+        }
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid rgba(44, 24, 16, 0.1);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            transition: border 0.3s, box-shadow 0.3s;
+            background: var(--white);
+        }
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--terracotta);
+            box-shadow: 0 0 0 4px rgba(198, 122, 92, 0.1);
+        }
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+        .reservation-form .btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* Success modal */
+        .success-modal {
+            position: fixed;
+            inset: 0;
+            z-index: 3000;
+            background: rgba(44, 24, 16, 0.6);
+            backdrop-filter: blur(8px);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            pointer-events: none;
+            transition: opacity 0.4s;
+            padding: 24px;
+        }
+        .success-modal.active {
+            opacity: 1;
+            pointer-events: all;
+        }
+        .success-modal .modal-box {
+            background: var(--white);
+            padding: 48px 40px 40px;
+            border-radius: var(--radius);
+            max-width: 420px;
             text-align: center;
-            margin-top: 28px;
+            box-shadow: var(--shadow-hover);
+            transform: scale(0.92);
+            transition: transform 0.4s cubic-bezier(0.22, 1, 0.36, 1);
+        }
+        .success-modal.active .modal-box {
+            transform: scale(1);
+        }
+        .success-modal .modal-box .icon {
+            font-size: 3.6rem;
+            margin-bottom: 12px;
+        }
+        .success-modal .modal-box h3 {
+            font-family: var(--font-serif);
+            font-size: 1.4rem;
+            margin-bottom: 4px;
+        }
+        .success-modal .modal-box p {
+            color: var(--text-muted);
+            margin-bottom: 20px;
         }
 
-        /* ===== LOCATION / CONTACT ===== */
+        /* ============================================================
+                   NEWSLETTER
+                   ============================================================ */
+        .newsletter-section {
+            background: var(--espresso);
+            color: var(--white);
+            padding: 60px 0;
+        }
+        .newsletter-wrapper {
+            max-width: 540px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        .newsletter-wrapper .section-label {
+            color: var(--terracotta-light);
+        }
+        .newsletter-wrapper .section-label::after {
+            background: var(--terracotta-light);
+        }
+        .newsletter-wrapper h3 {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+        .newsletter-wrapper p {
+            color: rgba(255, 255, 255, 0.6);
+            margin-bottom: 24px;
+        }
+        .newsletter-form {
+            display: flex;
+            gap: 12px;
+        }
+        .newsletter-form input {
+            flex: 1;
+            padding: 14px 20px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            border-radius: 50px;
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            background: rgba(255, 255, 255, 0.06);
+            color: var(--white);
+        }
+        .newsletter-form input::placeholder {
+            color: rgba(255, 255, 255, 0.35);
+        }
+        .newsletter-form input:focus {
+            outline: none;
+            border-color: var(--terracotta);
+            background: rgba(255, 255, 255, 0.1);
+        }
+        .newsletter-form .btn {
+            flex-shrink: 0;
+        }
+
+        /* ============================================================
+                   CONTACT
+                   ============================================================ */
         .location-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 60px;
+            gap: 50px;
             align-items: stretch;
         }
-
         .location-info h3 {
             font-family: var(--font-serif);
             font-size: 1.6rem;
-            font-weight: 600;
             color: var(--espresso);
             margin-bottom: 12px;
         }
         .location-info .address {
             color: var(--text-muted);
-            line-height: 1.8;
+            line-height: 1.9;
             margin-bottom: 20px;
         }
         .location-info .address strong {
             color: var(--espresso);
-            font-weight: 600;
         }
         .location-info .detail-row {
             display: flex;
@@ -943,12 +1243,11 @@
         .location-info .detail-row a:hover {
             color: var(--terracotta-dark);
         }
-
         .location-map {
             background: var(--beige);
             border-radius: var(--radius);
             overflow: hidden;
-            min-height: 300px;
+            min-height: 280px;
             position: relative;
             box-shadow: var(--shadow);
         }
@@ -956,7 +1255,7 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            min-height: 300px;
+            min-height: 280px;
         }
         .location-map .map-overlay {
             position: absolute;
@@ -965,7 +1264,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            background: rgba(44, 24, 16, 0.25);
+            background: rgba(44, 24, 16, 0.3);
             color: var(--white);
             text-align: center;
             padding: 24px;
@@ -982,59 +1281,61 @@
             margin-bottom: 16px;
         }
 
-        /* ===== RESERVATION CTA ===== */
-        .reservation-cta {
+        /* ============================================================
+                   FINAL CTA
+                   ============================================================ */
+        .final-cta {
             background: var(--espresso);
             color: var(--white);
             text-align: center;
             padding: 72px 0;
         }
-        .reservation-cta .section-title {
+        .final-cta .section-title {
             color: var(--white);
         }
-        .reservation-cta p {
+        .final-cta p {
             color: rgba(255, 255, 255, 0.7);
             max-width: 560px;
             margin: 0 auto 32px;
             font-size: 1.05rem;
-            line-height: 1.8;
+            line-height: 1.9;
         }
-        .reservation-cta .btn-group {
+        .final-cta .btn-group {
             display: flex;
             flex-wrap: wrap;
             justify-content: center;
-            gap: 16px;
+            gap: 14px;
         }
 
-        /* ===== FOOTER ===== */
+        /* ============================================================
+                   FOOTER
+                   ============================================================ */
         .footer {
             background: var(--espresso-light);
-            color: rgba(255, 255, 255, 0.6);
+            color: rgba(255, 255, 255, 0.5);
             padding: 56px 0 32px;
-            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
         }
-
         .footer-grid {
             display: grid;
             grid-template-columns: 2fr 1fr 1fr 1fr;
             gap: 40px;
             margin-bottom: 40px;
         }
-
         .footer-brand .logo {
             color: var(--white);
             margin-bottom: 8px;
             display: inline-block;
         }
         .footer-brand .tagline {
-            font-size: 0.95rem;
+            font-size: 0.9rem;
             font-weight: 300;
-            color: rgba(255, 255, 255, 0.5);
+            color: rgba(255, 255, 255, 0.4);
             margin-bottom: 16px;
         }
         .footer-brand .socials {
             display: flex;
-            gap: 14px;
+            gap: 12px;
         }
         .footer-brand .socials a {
             display: flex;
@@ -1043,9 +1344,8 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            background: rgba(255, 255, 255, 0.06);
-            color: rgba(255, 255, 255, 0.6);
-            font-size: 1.1rem;
+            background: rgba(255, 255, 255, 0.05);
+            color: rgba(255, 255, 255, 0.5);
             transition: var(--transition);
             border: 1px solid rgba(255, 255, 255, 0.04);
         }
@@ -1053,55 +1353,54 @@
             background: var(--terracotta);
             color: var(--white);
             border-color: var(--terracotta);
-            transform: translateY(-2px);
+            transform: translateY(-3px);
         }
-        /* social icons as SVG (no emojis) */
         .social-icon {
-            width: 22px;
-            height: 22px;
+            width: 20px;
+            height: 20px;
             fill: none;
             stroke: currentColor;
             stroke-width: 2;
             stroke-linecap: round;
             stroke-linejoin: round;
         }
-
         .footer-col h5 {
             color: var(--white);
             font-weight: 600;
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             margin-bottom: 16px;
             letter-spacing: 0.5px;
         }
         .footer-col a {
             display: block;
             padding: 4px 0;
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.4);
             transition: color 0.25s;
         }
         .footer-col a:hover {
             color: var(--white);
         }
         .footer-col p {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.85rem;
+            color: rgba(255, 255, 255, 0.4);
             line-height: 1.7;
             margin-bottom: 4px;
         }
-
         .footer-bottom {
-            border-top: 1px solid rgba(255, 255, 255, 0.06);
+            border-top: 1px solid rgba(255, 255, 255, 0.04);
             padding-top: 24px;
             display: flex;
             justify-content: space-between;
             flex-wrap: wrap;
             gap: 12px;
-            font-size: 0.85rem;
-            color: rgba(255, 255, 255, 0.35);
+            font-size: 0.8rem;
+            color: rgba(255, 255, 255, 0.25);
         }
 
-        /* ===== BACK TO TOP ===== */
+        /* ============================================================
+                   BACK TO TOP
+                   ============================================================ */
         .back-to-top {
             position: fixed;
             bottom: 32px;
@@ -1121,8 +1420,6 @@
             opacity: 0;
             pointer-events: none;
             transform: translateY(20px);
-            border: none;
-            cursor: pointer;
         }
         .back-to-top.visible {
             opacity: 1;
@@ -1135,10 +1432,12 @@
             box-shadow: var(--shadow-hover);
         }
 
-        /* ===== SCROLL REVEAL ===== */
+        /* ============================================================
+                   SCROLL REVEAL
+                   ============================================================ */
         .reveal {
             opacity: 0;
-            transform: translateY(30px);
+            transform: translateY(40px);
             transition: opacity 0.8s ease, transform 0.8s ease;
         }
         .reveal.visible {
@@ -1146,273 +1445,12 @@
             transform: translateY(0);
         }
 
-        /* ===== NEW SECTIONS ===== */
-        /* ---- Stats ---- */
-        .stats-section {
-            background: var(--espresso);
-            color: var(--white);
-            padding: 60px 0;
-        }
-
-        .stats-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 32px;
-            text-align: center;
-        }
-
-        .stat-item .number {
-            font-family: var(--font-serif);
-            font-size: 3rem;
-            font-weight: 700;
-            display: block;
-            line-height: 1.2;
-        }
-        .stat-item .label {
-            font-size: 0.9rem;
-            color: rgba(255, 255, 255, 0.6);
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-top: 4px;
-        }
-
-        /* ---- Reservation Form ---- */
-        .reservation-form-section {
-            background: var(--warm-offwhite);
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 40px;
-            align-items: center;
-        }
-
-        .reservation-form {
-            background: var(--white);
-            padding: 40px;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-        }
-
-        .reservation-form h3 {
-            font-family: var(--font-serif);
-            font-size: 1.5rem;
-            margin-bottom: 8px;
-            color: var(--espresso);
-        }
-
-        .reservation-form p {
-            color: var(--text-muted);
-            margin-bottom: 24px;
-        }
-
-        .form-group {
-            margin-bottom: 20px;
-        }
-
-        .form-group label {
-            display: block;
-            font-size: 0.85rem;
-            font-weight: 600;
-            color: var(--espresso);
-            margin-bottom: 4px;
-        }
-
-        .form-group input,
-        .form-group select,
-        .form-group textarea {
-            width: 100%;
-            padding: 12px 16px;
-            border: 1px solid rgba(44, 24, 16, 0.15);
-            border-radius: var(--radius-sm);
-            font-family: var(--font-sans);
-            font-size: 0.95rem;
-            transition: border 0.3s;
-            background: var(--warm-offwhite);
-        }
-
-        .form-group input:focus,
-        .form-group select:focus,
-        .form-group textarea:focus {
-            outline: none;
-            border-color: var(--terracotta);
-        }
-
-        .form-group textarea {
-            resize: vertical;
-            min-height: 80px;
-        }
-
-        .form-row {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 16px;
-        }
-
-        .reservation-form .btn {
-            width: 100%;
-            justify-content: center;
-        }
-
-        /* ---- Specials / Events ---- */
-        .specials-section {
-            background: var(--white);
-        }
-
-        .specials-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 30px;
-            margin-top: 32px;
-        }
-
-        .special-card {
-            background: var(--warm-offwhite);
-            border-radius: var(--radius);
-            overflow: hidden;
-            box-shadow: 0 2px 12px rgba(44, 24, 16, 0.04);
-            transition: var(--transition);
-        }
-
-        .special-card:hover {
-            transform: translateY(-6px);
-            box-shadow: var(--shadow);
-        }
-
-        .special-card img {
-            width: 100%;
-            aspect-ratio: 16/9;
-            object-fit: cover;
-        }
-
-        .special-card .content {
-            padding: 20px 24px 24px;
-        }
-
-        .special-card .content .tag {
-            font-size: 0.7rem;
-            font-weight: 600;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            color: var(--terracotta);
-        }
-
-        .special-card .content h4 {
-            font-family: var(--font-serif);
-            font-size: 1.2rem;
-            margin: 4px 0 8px;
-        }
-
-        .special-card .content p {
-            font-size: 0.9rem;
-            color: var(--text-muted);
-            line-height: 1.6;
-        }
-
-        /* ---- Newsletter ---- */
-        .newsletter-section {
-            background: var(--cream);
-            padding: 60px 0;
-        }
-
-        .newsletter-wrapper {
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            text-align: center;
-            max-width: 540px;
-            margin: 0 auto;
-        }
-
-        .newsletter-wrapper h3 {
-            font-family: var(--font-serif);
-            font-size: 2rem;
-            margin-bottom: 8px;
-        }
-
-        .newsletter-wrapper p {
-            color: var(--text-muted);
-            margin-bottom: 24px;
-        }
-
-        .newsletter-form {
-            display: flex;
-            width: 100%;
-            gap: 12px;
-        }
-
-        .newsletter-form input {
-            flex: 1;
-            padding: 12px 18px;
-            border: 1px solid rgba(44, 24, 16, 0.15);
-            border-radius: 50px;
-            font-family: var(--font-sans);
-            font-size: 0.95rem;
-            background: var(--white);
-        }
-
-        .newsletter-form input:focus {
-            outline: none;
-            border-color: var(--terracotta);
-        }
-
-        .newsletter-form .btn {
-            flex-shrink: 0;
-        }
-
-        /* ---- Team ---- */
-        .team-section {
-            background: var(--warm-offwhite);
-        }
-
-        .team-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 30px;
-            margin-top: 32px;
-        }
-
-        .team-member {
-            text-align: center;
-            background: var(--white);
-            padding: 24px 16px;
-            border-radius: var(--radius);
-            box-shadow: 0 2px 12px rgba(44, 24, 16, 0.04);
-            transition: var(--transition);
-        }
-
-        .team-member:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow);
-        }
-
-        .team-member img {
-            width: 120px;
-            height: 120px;
-            border-radius: 50%;
-            object-fit: cover;
-            margin: 0 auto 12px;
-            border: 4px solid var(--cream);
-        }
-
-        .team-member h4 {
-            font-family: var(--font-serif);
-            font-size: 1.1rem;
-        }
-
-        .team-member .role {
-            font-size: 0.85rem;
-            color: var(--text-muted);
-        }
-
-        /* ---- Responsive adjustments for new sections ---- */
-        @media (max-width: 1024px) {
+        /* ============================================================
+                   RESPONSIVE
+                   ============================================================ */
+        @media (max-width:1024px) {
             .features-grid {
                 grid-template-columns: repeat(2, 1fr);
-            }
-            .instagram-grid {
-                grid-template-columns: repeat(3, 1fr);
             }
             .stats-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -1420,12 +1458,8 @@
             .specials-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
-            .team-grid {
-                grid-template-columns: repeat(2, 1fr);
-            }
         }
-
-        @media (max-width: 992px) {
+        @media (max-width:992px) {
             .story-grid,
             .signature-grid,
             .location-grid,
@@ -1445,15 +1479,14 @@
                 gap: 32px;
             }
             .gallery-grid {
-                grid-template-columns: repeat(3, 1fr);
+                grid-template-columns: repeat(2, 1fr);
             }
-            .gallery-grid .gallery-item:nth-child(1) {
+            .gallery-grid .gallery-item:first-child {
                 grid-column: span 2;
-                grid-row: span 2;
+                grid-row: span 1;
             }
         }
-
-        @media (max-width: 768px) {
+        @media (max-width:768px) {
             :root {
                 --header-height: 64px;
             }
@@ -1465,9 +1498,6 @@
             }
             .section-padding {
                 padding: 56px 0;
-            }
-            .section-padding-sm {
-                padding: 40px 0;
             }
             .hero h1 {
                 font-size: clamp(2.2rem, 10vw, 3.4rem);
@@ -1483,25 +1513,17 @@
                 grid-template-columns: 1fr;
                 gap: 8px;
             }
-            .reviews-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
             .features-grid {
                 grid-template-columns: 1fr 1fr;
-                gap: 20px;
+                gap: 18px;
             }
             .gallery-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 10px;
             }
-            .gallery-grid .gallery-item:nth-child(1) {
+            .gallery-grid .gallery-item:first-child {
                 grid-column: span 2;
                 grid-row: span 1;
-            }
-            .instagram-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 8px;
             }
             .footer-grid {
                 grid-template-columns: 1fr;
@@ -1523,10 +1545,10 @@
                 justify-content: center;
             }
             .location-map {
-                min-height: 220px;
+                min-height: 200px;
             }
             .location-map img {
-                min-height: 220px;
+                min-height: 200px;
             }
             .lightbox {
                 padding: 20px;
@@ -1542,12 +1564,11 @@
                 grid-template-columns: 1fr 1fr;
                 gap: 20px;
             }
+            .stat-item .number {
+                font-size: 2.4rem;
+            }
             .specials-grid {
                 grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            .team-grid {
-                grid-template-columns: 1fr 1fr;
                 gap: 20px;
             }
             .form-row {
@@ -1563,114 +1584,107 @@
                 width: 100%;
                 justify-content: center;
             }
+            .reviews-carousel {
+                padding: 0 10px;
+            }
+            .review-slide blockquote {
+                font-size: 1rem;
+            }
         }
-
-        @media (max-width: 480px) {
+        @media (max-width:480px) {
             .container {
                 padding: 0 16px;
             }
             .hero h1 {
-                font-size: 2rem;
+                font-size: 1.8rem;
             }
             .hero-eyebrow {
-                font-size: 0.7rem;
+                font-size: 0.6rem;
                 letter-spacing: 2px;
             }
             .hero p {
-                font-size: 0.95rem;
+                font-size: 0.9rem;
             }
             .trust-grid {
                 grid-template-columns: 1fr 1fr;
-                gap: 12px;
+                gap: 10px;
             }
             .trust-item svg {
-                width: 24px;
-                height: 24px;
+                width: 22px;
+                height: 22px;
             }
             .trust-item strong {
-                font-size: 0.85rem;
+                font-size: 0.8rem;
             }
             .trust-item span {
-                font-size: 0.7rem;
-            }
-            .menu-tabs {
-                gap: 6px;
+                font-size: 0.65rem;
             }
             .menu-tab {
-                padding: 8px 18px;
-                font-size: 0.8rem;
+                padding: 8px 16px;
+                font-size: 0.75rem;
             }
             .features-grid {
                 grid-template-columns: 1fr;
-                gap: 16px;
+                gap: 14px;
             }
             .gallery-grid {
                 grid-template-columns: repeat(2, 1fr);
                 gap: 6px;
             }
-            .instagram-grid {
-                grid-template-columns: repeat(3, 1fr);
-                gap: 6px;
-            }
             .section-title {
-                font-size: 1.8rem;
+                font-size: 1.6rem;
             }
             .btn {
-                padding: 12px 24px;
-                font-size: 0.85rem;
-                min-height: 48px;
+                padding: 12px 22px;
+                font-size: 0.8rem;
+                min-height: 46px;
             }
             .nav-mobile {
-                width: 280px;
+                width: 270px;
                 padding: 72px 24px 32px;
             }
-            .reservation-cta {
+            .final-cta {
                 padding: 48px 0;
             }
-            .reservation-cta .btn-group {
+            .final-cta .btn-group {
                 flex-direction: column;
                 align-items: center;
             }
-            .reservation-cta .btn-group .btn {
+            .final-cta .btn-group .btn {
                 width: 100%;
-                max-width: 300px;
+                max-width: 280px;
             }
             .stats-grid {
                 grid-template-columns: 1fr 1fr;
                 gap: 12px;
             }
             .stat-item .number {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
-            .team-grid {
-                grid-template-columns: 1fr;
-                gap: 16px;
-            }
-            .team-member img {
-                width: 100px;
-                height: 100px;
-            }
-            .specials-grid {
-                grid-template-columns: 1fr;
+            .stat-item .label {
+                font-size: 0.65rem;
             }
         }
-
-        @media (max-width: 360px) {
+        @media (max-width:360px) {
             .hero h1 {
-                font-size: 1.7rem;
+                font-size: 1.5rem;
             }
             .trust-grid {
                 grid-template-columns: 1fr 1fr;
-                gap: 8px;
+                gap: 6px;
             }
             .menu-item-img {
-                width: 48px;
-                height: 48px;
+                width: 44px;
+                height: 44px;
+            }
+            .menu-item-info .name {
+                font-size: 0.85rem;
             }
         }
     </style>
 </head>
 <body>
+
     <!-- ===== HEADER ===== -->
     <header class="header" id="header">
         <div class="container">
@@ -1682,9 +1696,9 @@
                 <a href="#specials">Specials</a>
                 <a href="#gallery">Gallery</a>
                 <a href="#contact">Contact</a>
-                <a href="#reservation" class="btn btn-primary btn-sm">Reserve a Table</a>
+                <a href="#reservation" class="btn btn-primary btn-sm">Reserve</a>
             </nav>
-            <button class="hamburger" id="hamburger" aria-label="Toggle menu">
+            <button class="hamburger" id="hamburger" aria-label="Menu">
                 <span></span><span></span><span></span>
             </button>
         </div>
@@ -1710,13 +1724,13 @@
             <h1>
                 Good coffee.<br />
                 Good food.<br />
-                Good moments.
+                <span class="highlight">Good moments.</span>
             </h1>
             <p>
                 A cozy neighborhood café serving carefully crafted coffee, fresh food, and sweet moments — made for slow mornings and good conversations.
             </p>
             <div class="hero-buttons">
-                <a href="#menu" class="btn btn-primary">Explore Our Menu</a>
+                <a href="#menu" class="btn btn-primary">Explore Menu</a>
                 <a href="#reservation" class="btn btn-outline-light">Reserve a Table</a>
             </div>
         </div>
@@ -1733,22 +1747,22 @@
         <div class="container">
             <div class="trust-grid">
                 <div class="trust-item">
-                    <svg viewBox="0 0 24 24" width="28" height="28" stroke="#2C1810" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8z"/><path d="M8 6v2"/><path d="M16 6v2"/><path d="M4 12h16"/></svg>
+                    <svg viewBox="0 0 24 24" width="26" height="26" stroke="#2C1810" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M4 8a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v8a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2V8z"/><path d="M8 6v2"/><path d="M16 6v2"/><path d="M4 12h16"/></svg>
                     <strong>Freshly Prepared</strong>
-                    <span>Made fresh every day</span>
+                    <span>Made fresh daily</span>
                 </div>
                 <div class="trust-item">
-                    <svg viewBox="0 0 24 24" width="28" height="28" stroke="#2C1810" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21v-6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v6"/><path d="M12 11v3"/><path d="M12 3a8 8 0 0 0-8 8v10h16V11a8 8 0 0 0-8-8z"/></svg>
+                    <svg viewBox="0 0 24 24" width="26" height="26" stroke="#2C1810" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M8 21v-6a2 2 0 0 1 2-2h4a2 2 0 0 1 2 2v6"/><path d="M12 11v3"/><path d="M12 3a8 8 0 0 0-8 8v10h16V11a8 8 0 0 0-8-8z"/></svg>
                     <strong>Specialty Coffee</strong>
                     <span>Carefully selected beans</span>
                 </div>
                 <div class="trust-item">
-                    <svg viewBox="0 0 24 24" width="28" height="28" stroke="#2C1810" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+                    <svg viewBox="0 0 24 24" width="26" height="26" stroke="#2C1810" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
                     <strong>Cozy Atmosphere</strong>
                     <span>A place to slow down</span>
                 </div>
                 <div class="trust-item">
-                    <svg viewBox="0 0 24 24" width="28" height="28" stroke="#2C1810" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                    <svg viewBox="0 0 24 24" width="26" height="26" stroke="#2C1810" stroke-width="1.5" fill="none" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
                     <strong>Open Daily</strong>
                     <span>8:00 AM – 10:00 PM</span>
                 </div>
@@ -1760,19 +1774,19 @@
     <section class="stats-section">
         <div class="container">
             <div class="stats-grid">
-                <div class="stat-item reveal">
+                <div class="stat-item">
                     <span class="number" data-count="8">0</span>
                     <span class="label">Years of Excellence</span>
                 </div>
-                <div class="stat-item reveal">
+                <div class="stat-item">
                     <span class="number" data-count="15000">0</span>
                     <span class="label">Cups Served</span>
                 </div>
-                <div class="stat-item reveal">
+                <div class="stat-item">
                     <span class="number" data-count="120">0</span>
                     <span class="label">Menu Items</span>
                 </div>
-                <div class="stat-item reveal">
+                <div class="stat-item">
                     <span class="number" data-count="4.9">0</span>
                     <span class="label">Average Rating</span>
                 </div>
@@ -1780,12 +1794,12 @@
         </div>
     </section>
 
-    <!-- ===== OUR STORY ===== -->
+    <!-- ===== STORY ===== -->
     <section class="section-padding" id="story">
         <div class="container">
             <div class="story-grid">
                 <div class="story-image reveal">
-                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=80&auto=format&fit=crop" alt="Warm interior of Luna Café" loading="lazy" />
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=80&auto=format&fit=crop" alt="Luna Café interior" loading="lazy" />
                 </div>
                 <div class="story-content reveal">
                     <span class="section-label">Our Story</span>
@@ -1797,7 +1811,7 @@
                         We believe in quality ingredients, carefully prepared coffee, and a welcoming atmosphere where everyone feels at home. Every cup is brewed with intention, every dish made from scratch.
                     </p>
                     <div class="story-signature">— The Luna Team</div>
-                    <a href="#menu" class="story-link">Learn More →</a>
+                    <a href="#menu" class="story-link">Discover our menu →</a>
                 </div>
             </div>
         </div>
@@ -1807,7 +1821,7 @@
     <section class="menu-section section-padding" id="menu">
         <div class="container">
             <div class="text-center reveal">
-                <span class="section-label">Our Menu</span>
+                <span class="section-label centered">Our Menu</span>
                 <h2 class="section-title">Made with care. Served with love.</h2>
                 <p class="section-sub mx-auto">A few favorites from our kitchen and coffee bar.</p>
             </div>
@@ -1840,17 +1854,17 @@
                     <a href="#" class="btn btn-terracotta">Try the Luna Latte</a>
                 </div>
                 <div class="signature-image reveal">
-                    <img src="https://images.unsplash.com/photo-1485808191679-5f86510681a2?w=800&q=80&auto=format&fit=crop" alt="Luna Latte coffee with latte art" loading="lazy" />
+                    <img src="https://images.unsplash.com/photo-1485808191679-5f86510681a2?w=800&q=80&auto=format&fit=crop" alt="Luna Latte" loading="lazy" />
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- ===== SPECIALS / EVENTS ===== -->
+    <!-- ===== SPECIALS ===== -->
     <section class="specials-section section-padding" id="specials">
         <div class="container">
             <div class="text-center reveal">
-                <span class="section-label">What's New</span>
+                <span class="section-label centered">What's New</span>
                 <h2 class="section-title">This Week's Specials</h2>
                 <p class="section-sub mx-auto">Fresh creations from our kitchen, available for a limited time.</p>
             </div>
@@ -1868,7 +1882,7 @@
                     <div class="content">
                         <span class="tag">Seasonal</span>
                         <h4>Berry Bliss Pancakes</h4>
-                        <p>Fluffy pancakes topped with fresh berries, honey, and whipped cream.</p>
+                        <p>Fluffy pancakes topped with fresh berries, honey, and cream.</p>
                     </div>
                 </div>
                 <div class="special-card reveal">
@@ -1876,7 +1890,7 @@
                     <div class="content">
                         <span class="tag">Barista's Pick</span>
                         <h4>Caramel Hazelnut Latte</h4>
-                        <p>Espresso with steamed milk, caramel, and toasted hazelnut syrup.</p>
+                        <p>Espresso with steamed milk, caramel, and toasted hazelnut.</p>
                     </div>
                 </div>
             </div>
@@ -1887,51 +1901,18 @@
     <section class="section-padding" id="gallery">
         <div class="container">
             <div class="text-center reveal">
-                <span class="section-label">Gallery</span>
+                <span class="section-label centered">Gallery</span>
                 <h2 class="section-title">A glimpse inside Luna</h2>
             </div>
             <div class="gallery-grid" id="galleryGrid"></div>
         </div>
     </section>
 
-    <!-- ===== TEAM ===== -->
-    <section class="team-section section-padding">
-        <div class="container">
-            <div class="text-center reveal">
-                <span class="section-label">Our Team</span>
-                <h2 class="section-title">The faces behind the counter</h2>
-                <p class="section-sub mx-auto">Passionate baristas and chefs who make every visit special.</p>
-            </div>
-            <div class="team-grid">
-                <div class="team-member reveal">
-                    <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&q=80&auto=format&fit=crop&crop=face" alt="Head Barista" loading="lazy" />
-                    <h4>Ahmed R.</h4>
-                    <span class="role">Head Barista</span>
-                </div>
-                <div class="team-member reveal">
-                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80&auto=format&fit=crop&crop=face" alt="Pastry Chef" loading="lazy" />
-                    <h4>Zara K.</h4>
-                    <span class="role">Pastry Chef</span>
-                </div>
-                <div class="team-member reveal">
-                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80&auto=format&fit=crop&crop=face" alt="Sous Chef" loading="lazy" />
-                    <h4>Omar F.</h4>
-                    <span class="role">Sous Chef</span>
-                </div>
-                <div class="team-member reveal">
-                    <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&q=80&auto=format&fit=crop&crop=face" alt="Restaurant Manager" loading="lazy" />
-                    <h4>Layla S.</h4>
-                    <span class="role">Manager</span>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- ===== WHY PEOPLE LOVE ===== -->
+    <!-- ===== FEATURES ===== -->
     <section class="section-padding" style="background: #f8f4ef;">
         <div class="container">
             <div class="text-center reveal">
-                <span class="section-label">Why Luna</span>
+                <span class="section-label centered">Why Luna</span>
                 <h2 class="section-title">Why people love Luna</h2>
             </div>
             <div class="features-grid">
@@ -1959,49 +1940,57 @@
         </div>
     </section>
 
-    <!-- ===== REVIEWS ===== -->
+    <!-- ===== REVIEWS CAROUSEL ===== -->
     <section class="reviews-section section-padding" id="reviews">
         <div class="container">
             <div class="text-center reveal">
-                <span class="section-label">Testimonials</span>
+                <span class="section-label centered">Testimonials</span>
                 <h2 class="section-title">Kind words from our guests</h2>
             </div>
-            <div class="reviews-grid">
-                <div class="review-card reveal">
-                    <div class="review-stars">★★★★★</div>
-                    <blockquote>“The coffee is excellent, but the atmosphere is what keeps me coming back.”</blockquote>
-                    <div class="author">Sarah M. <small>· Regular</small></div>
-                </div>
-                <div class="review-card reveal">
-                    <div class="review-stars">★★★★★</div>
-                    <blockquote>“Beautiful little café. The pancakes and cappuccino are both amazing.”</blockquote>
-                    <div class="author">Hamza R. <small>· Foodie</small></div>
-                </div>
-                <div class="review-card reveal">
-                    <div class="review-stars">★★★★★</div>
-                    <blockquote>“Perfect place to catch up with friends or get some work done.”</blockquote>
-                    <div class="author">Ayesha K. <small>· Remote worker</small></div>
+            <div class="reviews-carousel">
+                <div class="reviews-track" id="reviewsTrack">
+                    <div class="review-slide">
+                        <div class="stars">★★★★★</div>
+                        <blockquote>“The coffee is excellent, but the atmosphere is what keeps me coming back.”</blockquote>
+                        <div class="author">Sarah M. <small>· Regular</small></div>
+                    </div>
+                    <div class="review-slide">
+                        <div class="stars">★★★★★</div>
+                        <blockquote>“Beautiful little café. The pancakes and cappuccino are both amazing.”</blockquote>
+                        <div class="author">Hamza R. <small>· Foodie</small></div>
+                    </div>
+                    <div class="review-slide">
+                        <div class="stars">★★★★★</div>
+                        <blockquote>“Perfect place to catch up with friends or get some work done.”</blockquote>
+                        <div class="author">Ayesha K. <small>· Remote worker</small></div>
+                    </div>
+                    <div class="review-slide">
+                        <div class="stars">★★★★★</div>
+                        <blockquote>“The best cappuccino in town. Cozy, warm, and always welcoming.”</blockquote>
+                        <div class="author">Usman A. <small>· Coffee lover</small></div>
+                    </div>
                 </div>
             </div>
+            <div class="review-dots" id="reviewDots"></div>
         </div>
     </section>
 
-    <!-- ===== RESERVATION FORM ===== -->
+    <!-- ===== RESERVATION ===== -->
     <section class="reservation-form-section section-padding" id="reservation">
         <div class="container">
             <div class="form-grid">
-                <div class="reveal">
+                <div class="form-info reveal">
                     <span class="section-label">Reserve</span>
-                    <h2 class="section-title">Book your table</h2>
-                    <p style="color:var(--text-muted); line-height:1.8;">
-                        Planning a visit? Let us know when you're coming, and we'll make sure a warm welcome awaits you.
-                    </p>
-                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&q=80&auto=format&fit=crop" alt="Cozy table setting" style="border-radius:var(--radius); margin-top:20px; box-shadow:var(--shadow);" loading="lazy" />
+                    <h3>Book your table</h3>
+                    <p>Planning a visit? Let us know when you're coming, and we'll make sure a warm welcome awaits you.</p>
+                    <div class="image-placeholder">
+                        <img src="https://images.unsplash.com/photo-1414235077428-338989a2e8c0?w=600&q=80&auto=format&fit=crop" alt="Elegant table setting" loading="lazy" />
+                    </div>
                 </div>
                 <div class="reservation-form reveal">
-                    <h3>Make a Reservation</h3>
-                    <p>Fill in your details and we'll confirm your booking shortly.</p>
-                    <form id="reservationForm" onsubmit="event.preventDefault(); alert('Thank you! Your reservation request has been sent.');">
+                    <h4>Make a Reservation</h4>
+                    <p class="sub">Fill in your details and we'll confirm your booking.</p>
+                    <form id="reservationForm" novalidate>
                         <div class="form-group">
                             <label for="resName">Full Name</label>
                             <input type="text" id="resName" placeholder="Your name" required />
@@ -2029,7 +2018,7 @@
                         </div>
                         <div class="form-group">
                             <label for="resNotes">Special Requests</label>
-                            <textarea id="resNotes" placeholder="Any allergies, preferences, or special occasions..."></textarea>
+                            <textarea id="resNotes" placeholder="Allergies, preferences, special occasions..."></textarea>
                         </div>
                         <button type="submit" class="btn btn-primary">Reserve Now</button>
                     </form>
@@ -2038,30 +2027,26 @@
         </div>
     </section>
 
-    <!-- ===== INSTAGRAM ===== -->
-    <section class="section-padding" style="background: #fff;">
-        <div class="container">
-            <div class="text-center reveal">
-                <span class="section-label">Follow along</span>
-                <h2 class="section-title">@lunacafe</h2>
-            </div>
-            <div class="instagram-grid" id="instagramGrid"></div>
-            <div class="instagram-footer">
-                <a href="https://instagram.com" target="_blank" class="btn btn-secondary">Follow Us</a>
-            </div>
+    <!-- ===== SUCCESS MODAL ===== -->
+    <div class="success-modal" id="successModal">
+        <div class="modal-box">
+            <div class="icon">✅</div>
+            <h3>Reservation Sent!</h3>
+            <p>We'll confirm your booking shortly. We look forward to seeing you at Luna.</p>
+            <button class="btn btn-primary" id="modalCloseBtn">Great!</button>
         </div>
-    </section>
+    </div>
 
     <!-- ===== NEWSLETTER ===== -->
     <section class="newsletter-section">
         <div class="container">
             <div class="newsletter-wrapper reveal">
-                <span class="section-label">Stay in touch</span>
+                <span class="section-label centered">Stay in touch</span>
                 <h3>Newsletter</h3>
                 <p>Get the latest updates on new menu items, events, and exclusive offers.</p>
-                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+                <form class="newsletter-form" id="newsletterForm">
                     <input type="email" placeholder="Your email address" required />
-                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                    <button type="submit" class="btn btn-terracotta">Subscribe</button>
                 </form>
             </div>
         </div>
@@ -2090,7 +2075,7 @@
                         <span class="label">Hours</span>
                         <span>Mon – Sun · 8:00 AM – 10:00 PM</span>
                     </div>
-                    <div style="margin-top: 20px;">
+                    <div style="margin-top:20px;">
                         <a href="#" class="btn btn-secondary btn-sm">Get Directions</a>
                     </div>
                 </div>
@@ -2106,8 +2091,8 @@
         </div>
     </section>
 
-    <!-- ===== RESERVATION CTA ===== -->
-    <section class="reservation-cta">
+    <!-- ===== FINAL CTA ===== -->
+    <section class="final-cta">
         <div class="container">
             <h2 class="section-title">Your table is waiting.</h2>
             <p>
@@ -2115,7 +2100,7 @@
             </p>
             <div class="btn-group">
                 <a href="tel:+923001234567" class="btn btn-terracotta">Call Us</a>
-                <a href="https://wa.me/923001234567" target="_blank" class="btn btn-outline-light">Message on WhatsApp</a>
+                <a href="https://wa.me/923001234567" target="_blank" class="btn btn-outline-light">WhatsApp</a>
                 <a href="#reservation" class="btn btn-primary">Book Online</a>
             </div>
         </div>
@@ -2177,86 +2162,113 @@
         <img src="" alt="Enlarged view" id="lightboxImg" />
     </div>
 
+    <!-- ============================================================
+    JAVASCRIPT
+    ============================================================ -->
     <script>
         document.addEventListener('DOMContentLoaded', function() {
 
-            // ===== MENU DATA =====
+            // ============================================================
+            // MENU DATA
+            // ============================================================
             const menuData = {
                 coffee: [
-                    { name: 'Espresso', desc: 'Rich and bold single-origin shot.', price: 'Rs. 350', img: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=120&q=80&auto=format&fit=crop&crop=center' },
-                    { name: 'Cappuccino', desc: 'Perfectly balanced with silky foam.', price: 'Rs. 450', img: 'https://images.unsplash.com/photo-1534778101976-62847782c213?w=120&q=80&auto=format&fit=crop&crop=center' },
-                    { name: 'Caramel Latte', desc: 'Smooth espresso with caramel and steamed milk.', price: 'Rs. 520', img: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=120&q=80&auto=format&fit=crop&crop=center' },
-                    { name: 'Mocha', desc: 'Espresso with rich chocolate and cream.', price: 'Rs. 500', img: 'https://images.unsplash.com/photo-1525808159002-e86e5ac97322?w=120&q=80&auto=format&fit=crop&crop=center' }
+                    { name: 'Espresso', desc: 'Rich and bold single-origin shot.', price: 'Rs. 350',
+                    img: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=120&q=80&auto=format&fit=crop&crop=center' },
+                    { name: 'Cappuccino', desc: 'Perfectly balanced with silky foam.', price: 'Rs. 450',
+                    img: 'https://images.unsplash.com/photo-1534778101976-62847782c213?w=120&q=80&auto=format&fit=crop&crop=center' },
+                    { name: 'Caramel Latte', desc: 'Smooth espresso with caramel and steamed milk.', price: 'Rs. 520',
+                    img: 'https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=120&q=80&auto=format&fit=crop&crop=center' },
+                    { name: 'Mocha', desc: 'Espresso with rich chocolate and cream.', price: 'Rs. 500',
+                    img: 'https://images.unsplash.com/photo-1525808159002-e86e5ac97322?w=120&q=80&auto=format&fit=crop&crop=center' }
                 ],
                 breakfast: [
-                    { name: 'Classic Pancakes', desc: 'Fluffy pancakes with syrup and fresh berries.', price: 'Rs. 650', img: 'https://images.unsplash.com/photo-1528207776546-365bb710ee93?w=120&q=80&auto=format&fit=crop&crop=center' },
-                    { name: 'Avocado Toast', desc: 'Sourdough with smashed avocado and poached egg.', price: 'Rs. 750', img: 'https://images.unsplash.com/photo-1525351484163-7529414344d8?w=120&q=80&auto=format&fit=crop&crop=center' },
-                    { name: 'Egg & Cheese Croissant', desc: 'Buttery croissant with scrambled eggs and cheddar.', price: 'Rs. 600', img: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=120&q=80&auto=format&fit=crop&crop=center' }
+                    { name: 'Classic Pancakes', desc: 'Fluffy pancakes with syrup and berries.', price: 'Rs. 650',
+                    img: 'https://images.unsplash.com/photo-1528207776546-365bb710ee93?w=120&q=80&auto=format&fit=crop&crop=center' },
+                    { name: 'Avocado Toast', desc: 'Sourdough with avocado and poached egg.', price: 'Rs. 750',
+                    img: 'https://images.unsplash.com/photo-1525351484163-7529414344d8?w=120&q=80&auto=format&fit=crop&crop=center' },
+                    { name: 'Egg & Cheese Croissant', desc: 'Buttery croissant with eggs and cheddar.', price: 'Rs. 600',
+                    img: 'https://images.unsplash.com/photo-1555507036-ab1f4038808a?w=120&q=80&auto=format&fit=crop&crop=center' }
                 ],
                 lunch: [
-                    { name: 'Creamy Alfredo Pasta', desc: 'Fettuccine in a rich parmesan cream sauce.', price: 'Rs. 1,050', img: 'https://images.unsplash.com/photo-1645112411342-9669e5d4b5f6?w=120&q=80&auto=format&fit=crop&crop=center' },
-                    { name: 'Grilled Chicken Sandwich', desc: 'Chargrilled chicken with pesto and fresh greens.', price: 'Rs. 850', img: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=120&q=80&auto=format&fit=crop&crop=center' },
-                    { name: 'Luna Chicken Wrap', desc: 'Grilled chicken with avocado, lettuce and lime dressing.', price: 'Rs. 800', img: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=120&q=80&auto=format&fit=crop&crop=center' }
+                    { name: 'Creamy Alfredo Pasta', desc: 'Fettuccine in parmesan cream sauce.', price: 'Rs. 1,050',
+                    img: 'https://images.unsplash.com/photo-1645112411342-9669e5d4b5f6?w=120&q=80&auto=format&fit=crop&crop=center' },
+                    { name: 'Grilled Chicken Sandwich', desc: 'Chargrilled chicken with pesto and greens.',
+                    price: 'Rs. 850',
+                    img: 'https://images.unsplash.com/photo-1550547660-d9450f859349?w=120&q=80&auto=format&fit=crop&crop=center' },
+                    { name: 'Luna Chicken Wrap', desc: 'Grilled chicken with avocado and lime dressing.',
+                    price: 'Rs. 800',
+                    img: 'https://images.unsplash.com/photo-1626700051175-6818013e1d4f?w=120&q=80&auto=format&fit=crop&crop=center' }
                 ],
                 desserts: [
-                    { name: 'Classic Cheesecake', desc: 'Creamy New York style with berry compote.', price: 'Rs. 550', img: 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=120&q=80&auto=format&fit=crop&crop=center' },
-                    { name: 'Chocolate Cake', desc: 'Rich chocolate layer cake with ganache.', price: 'Rs. 500', img: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=120&q=80&auto=format&fit=crop&crop=center' },
-                    { name: 'Cinnamon Roll', desc: 'Warm roll with cream cheese icing and walnuts.', price: 'Rs. 400', img: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=120&q=80&auto=format&fit=crop&crop=center' }
+                    { name: 'Classic Cheesecake', desc: 'Creamy New York style with berry compote.', price: 'Rs. 550',
+                    img: 'https://images.unsplash.com/photo-1533134242443-d4fd215305ad?w=120&q=80&auto=format&fit=crop&crop=center' },
+                    { name: 'Chocolate Cake', desc: 'Rich chocolate layer cake with ganache.', price: 'Rs. 500',
+                    img: 'https://images.unsplash.com/photo-1578985545062-69928b1d9587?w=120&q=80&auto=format&fit=crop&crop=center' },
+                    { name: 'Cinnamon Roll', desc: 'Warm roll with cream cheese icing.', price: 'Rs. 400',
+                    img: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=120&q=80&auto=format&fit=crop&crop=center' }
                 ]
             };
 
-            // ===== RENDER MENU =====
+            // ============================================================
+            // RENDER MENU
+            // ============================================================
             const menuGrid = document.getElementById('menuGrid');
-            let currentCategory = 'coffee';
 
             function renderMenu(category) {
                 const items = menuData[category] || [];
                 menuGrid.innerHTML = items.map(item => `
-                        <div class="menu-item">
-                          ${item.img ? `<div class="menu-item-img"><img src="${item.img}" alt="${item.name}" loading="lazy" /></div>` : ''}
-                          <div class="menu-item-info">
-                            <div class="name">
-                              <span>${item.name}</span>
-                              <span class="price">${item.price}</span>
+                            <div class="menu-item">
+                              ${item.img ? `<div class="menu-item-img"><img src="${item.img}" alt="${item.name}" loading="lazy" /></div>` : ''}
+                              <div class="menu-item-info">
+                                <div class="name">
+                                  <span>${item.name}</span>
+                                  <span class="price">${item.price}</span>
+                                </div>
+                                <div class="desc">${item.desc}</div>
+                              </div>
                             </div>
-                            <div class="desc">${item.desc}</div>
-                          </div>
-                        </div>
-                      `).join('');
+                          `).join('');
             }
 
             const tabs = document.querySelectorAll('.menu-tab');
             tabs.forEach(tab => {
                 tab.addEventListener('click', function() {
-                    tabs.forEach(t => { t.classList.remove('active'); });
+                    tabs.forEach(t => t.classList.remove('active'));
                     this.classList.add('active');
-                    currentCategory = this.dataset.category;
-                    renderMenu(currentCategory);
+                    renderMenu(this.dataset.category);
                 });
             });
             renderMenu('coffee');
 
-            // ===== GALLERY =====
-            // Fixed barista image URL: using a reliable one
+            // ============================================================
+            // GALLERY — Fewer, reliable images
+            // ============================================================
             const galleryImages = [
-                { src: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&q=80&auto=format&fit=crop', alt: 'Fresh pastries and croissants' },
-                { src: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&q=80&auto=format&fit=crop', alt: 'Cozy café interior with warm lighting' },
-                { src: 'https://images.unsplash.com/photo-1455477331475-3a7f5b7a4c5f?w=600&q=80&auto=format&fit=crop', alt: 'Barista preparing coffee' },
-                { src: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80&auto=format&fit=crop', alt: 'Pouring a fresh cup of coffee' },
-                { src: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80&auto=format&fit=crop', alt: 'Delicious meal on a plate' },
-                { src: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80&auto=format&fit=crop', alt: 'Restaurant interior with wooden tables' },
-                { src: 'https://images.unsplash.com/photo-1541167760496-1628856ab772?w=600&q=80&auto=format&fit=crop', alt: 'Coffee beans and brewing equipment' },
-                { src: 'https://images.unsplash.com/photo-1552566626-52f8b828add9?w=600&q=80&auto=format&fit=crop', alt: 'Café exterior with outdoor seating' }
+                { src: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&q=80&auto=format&fit=crop',
+                alt: 'Fresh pastries' },
+                { src: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&q=80&auto=format&fit=crop',
+                    alt: 'Cozy interior' },
+                { src: 'https://images.unsplash.com/photo-1455477331475-3a7f5b7a4c5f?w=600&q=80&auto=format&fit=crop',
+                    alt: 'Barista working' },
+                { src: 'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=600&q=80&auto=format&fit=crop',
+                    alt: 'Pouring coffee' },
+                { src: 'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=600&q=80&auto=format&fit=crop',
+                    alt: 'Delicious meal' },
+                { src: 'https://images.unsplash.com/photo-1555396273-367ea4eb4db5?w=600&q=80&auto=format&fit=crop',
+                    alt: 'Warm interior' }
             ];
 
             const galleryGrid = document.getElementById('galleryGrid');
             galleryGrid.innerHTML = galleryImages.map(img => `
-                    <div class="gallery-item" data-src="${img.src}" data-alt="${img.alt}">
-                        <img src="${img.src}" alt="${img.alt}" loading="lazy" />
-                    </div>
-                `).join('');
+                        <div class="gallery-item" data-src="${img.src}" data-alt="${img.alt}">
+                            <img src="${img.src}" alt="${img.alt}" loading="lazy" />
+                        </div>
+                    `).join('');
 
-            // ===== LIGHTBOX =====
+            // ============================================================
+            // LIGHTBOX
+            // ============================================================
             const lightbox = document.getElementById('lightbox');
             const lightboxImg = document.getElementById('lightboxImg');
             const lightboxClose = document.getElementById('lightboxClose');
@@ -2278,23 +2290,54 @@
             lightbox.addEventListener('click', function(e) { if (e.target === this) closeLightbox(); });
             document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeLightbox(); });
 
-            // ===== INSTAGRAM =====
-            const instaImages = [
-                'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=400&q=80&auto=format&fit=crop&crop=center',
-                'https://images.unsplash.com/photo-1485808191679-5f86510681a2?w=400&q=80&auto=format&fit=crop&crop=center',
-                'https://images.unsplash.com/photo-1495474472287-4d71bcdd2085?w=400&q=80&auto=format&fit=crop&crop=center',
-                'https://images.unsplash.com/photo-1455477331475-3a7f5b7a4c5f?w=400&q=80&auto=format&fit=crop&crop=center',
-                'https://images.unsplash.com/photo-1504674900247-0877df9cc836?w=400&q=80&auto=format&fit=crop&crop=center',
-                'https://images.unsplash.com/photo-1541167760496-1628856ab772?w=400&q=80&auto=format&fit=crop&crop=center'
-            ];
-            const instagramGrid = document.getElementById('instagramGrid');
-            instagramGrid.innerHTML = instaImages.map(src => `
-                    <div class="instagram-item">
-                        <img src="${src}" alt="Luna Café Instagram" loading="lazy" />
-                    </div>
-                `).join('');
+            // ============================================================
+            // REVIEWS CAROUSEL
+            // ============================================================
+            const track = document.getElementById('reviewsTrack');
+            const dotsContainer = document.getElementById('reviewDots');
+            const slides = track.querySelectorAll('.review-slide');
+            let currentSlide = 0;
+            let autoPlayInterval;
 
-            // ===== STATS COUNTER =====
+            slides.forEach((_, i) => {
+                const dot = document.createElement('button');
+                dot.classList.toggle('active', i === 0);
+                dot.setAttribute('aria-label', `Review ${i + 1}`);
+                dot.addEventListener('click', () => goToSlide(i));
+                dotsContainer.appendChild(dot);
+            });
+
+            function goToSlide(index) {
+                currentSlide = index;
+                track.style.transform = `translateX(-${index * 100}%)`;
+                dotsContainer.querySelectorAll('button').forEach((d, i) => {
+                    d.classList.toggle('active', i === index);
+                });
+            }
+
+            function nextSlide() {
+                goToSlide((currentSlide + 1) % slides.length);
+            }
+
+            function startAutoPlay() {
+                stopAutoPlay();
+                autoPlayInterval = setInterval(nextSlide, 5000);
+            }
+
+            function stopAutoPlay() {
+                if (autoPlayInterval) clearInterval(autoPlayInterval);
+            }
+
+            startAutoPlay();
+
+            // Pause on hover
+            const carousel = document.querySelector('.reviews-carousel');
+            carousel.addEventListener('mouseenter', stopAutoPlay);
+            carousel.addEventListener('mouseleave', startAutoPlay);
+
+            // ============================================================
+            // STATS COUNTER
+            // ============================================================
             const statNumbers = document.querySelectorAll('.stat-item .number');
             let countersStarted = false;
 
@@ -2303,29 +2346,36 @@
                 countersStarted = true;
                 statNumbers.forEach(el => {
                     const target = parseFloat(el.dataset.count);
-                    const increment = target / 80;
-                    let current = 0;
-                    const timer = setInterval(() => {
-                        current += increment;
-                        if (current >= target) {
-                            el.textContent = target;
-                            clearInterval(timer);
+                    const duration = 2000;
+                    const startTime = performance.now();
+
+                    function updateCounter(time) {
+                        const progress = Math.min((time - startTime) / duration, 1);
+                        const eased = 1 - Math.pow(1 - progress, 3);
+                        const current = eased * target;
+                        el.textContent = target % 1 === 0 ? Math.floor(current) : current.toFixed(1);
+                        if (progress < 1) {
+                            requestAnimationFrame(updateCounter);
                         } else {
-                            el.textContent = Math.floor(current);
+                            el.textContent = target;
                         }
-                    }, 25);
+                    }
+                    requestAnimationFrame(updateCounter);
                 });
             }
 
-            // ===== NAVBAR SCROLL =====
+            // ============================================================
+            // NAVBAR SCROLL
+            // ============================================================
             const header = document.getElementById('header');
             window.addEventListener('scroll', function() {
                 const scrollY = window.pageYOffset || document.documentElement.scrollTop;
                 header.classList.toggle('scrolled', scrollY > 40);
-                const backBtn = document.getElementById('backToTop');
-                backBtn.classList.toggle('visible', scrollY > 600);
 
-                // Trigger stats when stats section is visible
+                const backBtn = document.getElementById('backToTop');
+                backBtn.classList.toggle('visible', scrollY > 500);
+
+                // Stats trigger
                 const statsSection = document.querySelector('.stats-section');
                 if (statsSection) {
                     const rect = statsSection.getBoundingClientRect();
@@ -2335,12 +2385,16 @@
                 }
             });
 
-            // ===== BACK TO TOP =====
+            // ============================================================
+            // BACK TO TOP
+            // ============================================================
             document.getElementById('backToTop').addEventListener('click', function() {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
             });
 
-            // ===== MOBILE MENU =====
+            // ============================================================
+            // MOBILE MENU
+            // ============================================================
             const hamburger = document.getElementById('hamburger');
             const navMobile = document.getElementById('navMobile');
             const navOverlay = document.getElementById('navOverlay');
@@ -2357,17 +2411,24 @@
             hamburger.addEventListener('click', () => toggleMenu());
             navOverlay.addEventListener('click', () => toggleMenu(false));
             navMobile.querySelectorAll('a').forEach(link => link.addEventListener('click', () => toggleMenu(false)));
-            document.addEventListener('keydown', function(e) { if (e.key === 'Escape' && navMobile.classList.contains('open'))
-                    toggleMenu(false); });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && navMobile.classList.contains('open')) toggleMenu(false);
+            });
 
-            // ===== SCROLL REVEAL =====
+            // ============================================================
+            // SCROLL REVEAL
+            // ============================================================
             const revealEls = document.querySelectorAll('.reveal');
             const observer = new IntersectionObserver((entries) => {
-                entries.forEach(entry => { if (entry.isIntersecting) entry.target.classList.add('visible'); });
-            }, { threshold: 0.15, rootMargin: '0px 0px -40px 0px' });
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) entry.target.classList.add('visible');
+                });
+            }, { threshold: 0.12, rootMargin: '0px 0px -40px 0px' });
             revealEls.forEach(el => observer.observe(el));
 
-            // ===== SMOOTH ANCHOR SCROLL =====
+            // ============================================================
+            // SMOOTH ANCHOR SCROLL
+            // ============================================================
             document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
                     const targetId = this.getAttribute('href');
@@ -2376,13 +2437,22 @@
                     if (target) {
                         e.preventDefault();
                         const offset = 80;
-                        window.scrollTo({ top: target.getBoundingClientRect().top + window.pageYOffset - offset,
-                            behavior: 'smooth' });
+                        window.scrollTo({
+                            top: target.getBoundingClientRect().top + window.pageYOffset - offset,
+                            behavior: 'smooth'
+                        });
                     }
                 });
             });
 
-            // ===== SET TODAY'S DATE IN RESERVATION FORM =====
+            // ============================================================
+            // RESERVATION FORM
+            // ============================================================
+            const resForm = document.getElementById('reservationForm');
+            const successModal = document.getElementById('successModal');
+            const modalCloseBtn = document.getElementById('modalCloseBtn');
+
+            // Set min date to today
             const dateInput = document.getElementById('resDate');
             if (dateInput) {
                 const today = new Date().toISOString().split('T')[0];
@@ -2390,7 +2460,54 @@
                 dateInput.value = today;
             }
 
+            resForm.addEventListener('submit', function(e) {
+                e.preventDefault();
+                // Simple validation
+                const name = document.getElementById('resName').value.trim();
+                const email = document.getElementById('resEmail').value.trim();
+                if (!name || !email) {
+                    alert('Please fill in your name and email.');
+                    return;
+                }
+                successModal.classList.add('active');
+                document.body.style.overflow = 'hidden';
+            });
+
+            function closeModal() {
+                successModal.classList.remove('active');
+                document.body.style.overflow = '';
+                resForm.reset();
+                if (dateInput) {
+                    const today = new Date().toISOString().split('T')[0];
+                    dateInput.value = today;
+                }
+            }
+
+            modalCloseBtn.addEventListener('click', closeModal);
+            successModal.addEventListener('click', function(e) {
+                if (e.target === this) closeModal();
+            });
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && successModal.classList.contains('active')) closeModal();
+            });
+
+            // ============================================================
+            // NEWSLETTER
+            // ============================================================
+            document.getElementById('newsletterForm').addEventListener('submit', function(e) {
+                e.preventDefault();
+                const input = this.querySelector('input');
+                if (input.value.trim()) {
+                    alert('🎉 Thank you for subscribing to the Luna Café newsletter!');
+                    input.value = '';
+                }
+            });
+
+            // ============================================================
+            // CONSOLE
+            // ============================================================
             console.log('☕ Luna Café — Good coffee. Good food. Good moments.');
+
         });
     </script>
 </body>
