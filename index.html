@@ -1146,7 +1146,267 @@
             transform: translateY(0);
         }
 
-        /* ===== RESPONSIVE ===== */
+        /* ===== NEW SECTIONS ===== */
+        /* ---- Stats ---- */
+        .stats-section {
+            background: var(--espresso);
+            color: var(--white);
+            padding: 60px 0;
+        }
+
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 32px;
+            text-align: center;
+        }
+
+        .stat-item .number {
+            font-family: var(--font-serif);
+            font-size: 3rem;
+            font-weight: 700;
+            display: block;
+            line-height: 1.2;
+        }
+        .stat-item .label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.6);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-top: 4px;
+        }
+
+        /* ---- Reservation Form ---- */
+        .reservation-form-section {
+            background: var(--warm-offwhite);
+        }
+
+        .form-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+            align-items: center;
+        }
+
+        .reservation-form {
+            background: var(--white);
+            padding: 40px;
+            border-radius: var(--radius);
+            box-shadow: var(--shadow);
+        }
+
+        .reservation-form h3 {
+            font-family: var(--font-serif);
+            font-size: 1.5rem;
+            margin-bottom: 8px;
+            color: var(--espresso);
+        }
+
+        .reservation-form p {
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            font-size: 0.85rem;
+            font-weight: 600;
+            color: var(--espresso);
+            margin-bottom: 4px;
+        }
+
+        .form-group input,
+        .form-group select,
+        .form-group textarea {
+            width: 100%;
+            padding: 12px 16px;
+            border: 1px solid rgba(44, 24, 16, 0.15);
+            border-radius: var(--radius-sm);
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            transition: border 0.3s;
+            background: var(--warm-offwhite);
+        }
+
+        .form-group input:focus,
+        .form-group select:focus,
+        .form-group textarea:focus {
+            outline: none;
+            border-color: var(--terracotta);
+        }
+
+        .form-group textarea {
+            resize: vertical;
+            min-height: 80px;
+        }
+
+        .form-row {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 16px;
+        }
+
+        .reservation-form .btn {
+            width: 100%;
+            justify-content: center;
+        }
+
+        /* ---- Specials / Events ---- */
+        .specials-section {
+            background: var(--white);
+        }
+
+        .specials-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 30px;
+            margin-top: 32px;
+        }
+
+        .special-card {
+            background: var(--warm-offwhite);
+            border-radius: var(--radius);
+            overflow: hidden;
+            box-shadow: 0 2px 12px rgba(44, 24, 16, 0.04);
+            transition: var(--transition);
+        }
+
+        .special-card:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow);
+        }
+
+        .special-card img {
+            width: 100%;
+            aspect-ratio: 16/9;
+            object-fit: cover;
+        }
+
+        .special-card .content {
+            padding: 20px 24px 24px;
+        }
+
+        .special-card .content .tag {
+            font-size: 0.7rem;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--terracotta);
+        }
+
+        .special-card .content h4 {
+            font-family: var(--font-serif);
+            font-size: 1.2rem;
+            margin: 4px 0 8px;
+        }
+
+        .special-card .content p {
+            font-size: 0.9rem;
+            color: var(--text-muted);
+            line-height: 1.6;
+        }
+
+        /* ---- Newsletter ---- */
+        .newsletter-section {
+            background: var(--cream);
+            padding: 60px 0;
+        }
+
+        .newsletter-wrapper {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            text-align: center;
+            max-width: 540px;
+            margin: 0 auto;
+        }
+
+        .newsletter-wrapper h3 {
+            font-family: var(--font-serif);
+            font-size: 2rem;
+            margin-bottom: 8px;
+        }
+
+        .newsletter-wrapper p {
+            color: var(--text-muted);
+            margin-bottom: 24px;
+        }
+
+        .newsletter-form {
+            display: flex;
+            width: 100%;
+            gap: 12px;
+        }
+
+        .newsletter-form input {
+            flex: 1;
+            padding: 12px 18px;
+            border: 1px solid rgba(44, 24, 16, 0.15);
+            border-radius: 50px;
+            font-family: var(--font-sans);
+            font-size: 0.95rem;
+            background: var(--white);
+        }
+
+        .newsletter-form input:focus {
+            outline: none;
+            border-color: var(--terracotta);
+        }
+
+        .newsletter-form .btn {
+            flex-shrink: 0;
+        }
+
+        /* ---- Team ---- */
+        .team-section {
+            background: var(--warm-offwhite);
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 30px;
+            margin-top: 32px;
+        }
+
+        .team-member {
+            text-align: center;
+            background: var(--white);
+            padding: 24px 16px;
+            border-radius: var(--radius);
+            box-shadow: 0 2px 12px rgba(44, 24, 16, 0.04);
+            transition: var(--transition);
+        }
+
+        .team-member:hover {
+            transform: translateY(-4px);
+            box-shadow: var(--shadow);
+        }
+
+        .team-member img {
+            width: 120px;
+            height: 120px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin: 0 auto 12px;
+            border: 4px solid var(--cream);
+        }
+
+        .team-member h4 {
+            font-family: var(--font-serif);
+            font-size: 1.1rem;
+        }
+
+        .team-member .role {
+            font-size: 0.85rem;
+            color: var(--text-muted);
+        }
+
+        /* ---- Responsive adjustments for new sections ---- */
         @media (max-width: 1024px) {
             .features-grid {
                 grid-template-columns: repeat(2, 1fr);
@@ -1154,29 +1414,31 @@
             .instagram-grid {
                 grid-template-columns: repeat(3, 1fr);
             }
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .specials-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+            .team-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
         }
 
         @media (max-width: 992px) {
-            .story-grid {
+            .story-grid,
+            .signature-grid,
+            .location-grid,
+            .form-grid {
                 grid-template-columns: 1fr;
                 gap: 40px;
             }
-            .story-image {
-                aspect-ratio: 16/10;
-            }
-            .signature-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
-            }
+            .story-image,
             .signature-image {
                 aspect-ratio: 16/10;
             }
             .signature-content p {
                 max-width: 100%;
-            }
-            .location-grid {
-                grid-template-columns: 1fr;
-                gap: 40px;
             }
             .footer-grid {
                 grid-template-columns: 1fr 1fr;
@@ -1276,6 +1538,31 @@
                 height: 44px;
                 font-size: 1.6rem;
             }
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+            .specials-grid {
+                grid-template-columns: 1fr;
+                gap: 20px;
+            }
+            .team-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 20px;
+            }
+            .form-row {
+                grid-template-columns: 1fr;
+            }
+            .reservation-form {
+                padding: 24px;
+            }
+            .newsletter-form {
+                flex-direction: column;
+            }
+            .newsletter-form .btn {
+                width: 100%;
+                justify-content: center;
+            }
         }
 
         @media (max-width: 480px) {
@@ -1348,6 +1635,24 @@
                 width: 100%;
                 max-width: 300px;
             }
+            .stats-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 12px;
+            }
+            .stat-item .number {
+                font-size: 2.2rem;
+            }
+            .team-grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+            .team-member img {
+                width: 100px;
+                height: 100px;
+            }
+            .specials-grid {
+                grid-template-columns: 1fr;
+            }
         }
 
         @media (max-width: 360px) {
@@ -1374,9 +1679,10 @@
                 <a href="#home">Home</a>
                 <a href="#story">Our Story</a>
                 <a href="#menu">Menu</a>
+                <a href="#specials">Specials</a>
                 <a href="#gallery">Gallery</a>
                 <a href="#contact">Contact</a>
-                <a href="#menu" class="btn btn-primary btn-sm">View Menu</a>
+                <a href="#reservation" class="btn btn-primary btn-sm">Reserve a Table</a>
             </nav>
             <button class="hamburger" id="hamburger" aria-label="Toggle menu">
                 <span></span><span></span><span></span>
@@ -1390,9 +1696,10 @@
         <a href="#home">Home</a>
         <a href="#story">Our Story</a>
         <a href="#menu">Menu</a>
+        <a href="#specials">Specials</a>
         <a href="#gallery">Gallery</a>
         <a href="#contact">Contact</a>
-        <a href="#menu" class="btn btn-primary">View Menu</a>
+        <a href="#reservation" class="btn btn-primary">Reserve a Table</a>
     </nav>
 
     <!-- ===== HERO ===== -->
@@ -1410,7 +1717,7 @@
             </p>
             <div class="hero-buttons">
                 <a href="#menu" class="btn btn-primary">Explore Our Menu</a>
-                <a href="#contact" class="btn btn-outline-light">Find Us</a>
+                <a href="#reservation" class="btn btn-outline-light">Reserve a Table</a>
             </div>
         </div>
         <div class="hero-scroll">
@@ -1449,12 +1756,36 @@
         </div>
     </section>
 
+    <!-- ===== STATS ===== -->
+    <section class="stats-section">
+        <div class="container">
+            <div class="stats-grid">
+                <div class="stat-item reveal">
+                    <span class="number" data-count="8">0</span>
+                    <span class="label">Years of Excellence</span>
+                </div>
+                <div class="stat-item reveal">
+                    <span class="number" data-count="15000">0</span>
+                    <span class="label">Cups Served</span>
+                </div>
+                <div class="stat-item reveal">
+                    <span class="number" data-count="120">0</span>
+                    <span class="label">Menu Items</span>
+                </div>
+                <div class="stat-item reveal">
+                    <span class="number" data-count="4.9">0</span>
+                    <span class="label">Average Rating</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ===== OUR STORY ===== -->
     <section class="section-padding" id="story">
         <div class="container">
             <div class="story-grid">
                 <div class="story-image reveal">
-                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=80&auto=format&fit=crop" alt="Warm and inviting interior of Luna Café" loading="lazy" />
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=800&q=80&auto=format&fit=crop" alt="Warm interior of Luna Café" loading="lazy" />
                 </div>
                 <div class="story-content reveal">
                     <span class="section-label">Our Story</span>
@@ -1515,6 +1846,43 @@
         </div>
     </section>
 
+    <!-- ===== SPECIALS / EVENTS ===== -->
+    <section class="specials-section section-padding" id="specials">
+        <div class="container">
+            <div class="text-center reveal">
+                <span class="section-label">What's New</span>
+                <h2 class="section-title">This Week's Specials</h2>
+                <p class="section-sub mx-auto">Fresh creations from our kitchen, available for a limited time.</p>
+            </div>
+            <div class="specials-grid">
+                <div class="special-card reveal">
+                    <img src="https://images.unsplash.com/photo-1546069901-ba9599a7e63c?w=600&q=80&auto=format&fit=crop" alt="Truffle Mushroom Pasta" loading="lazy" />
+                    <div class="content">
+                        <span class="tag">New</span>
+                        <h4>Truffle Mushroom Pasta</h4>
+                        <p>Creamy fettuccine with wild mushrooms, truffle oil, and parmesan.</p>
+                    </div>
+                </div>
+                <div class="special-card reveal">
+                    <img src="https://images.unsplash.com/photo-1551024506-0bccd828d307?w=600&q=80&auto=format&fit=crop" alt="Berry Bliss Pancakes" loading="lazy" />
+                    <div class="content">
+                        <span class="tag">Seasonal</span>
+                        <h4>Berry Bliss Pancakes</h4>
+                        <p>Fluffy pancakes topped with fresh berries, honey, and whipped cream.</p>
+                    </div>
+                </div>
+                <div class="special-card reveal">
+                    <img src="https://images.unsplash.com/photo-1514432324607-a09d9b4aefdd?w=600&q=80&auto=format&fit=crop" alt="Caramel Hazelnut Latte" loading="lazy" />
+                    <div class="content">
+                        <span class="tag">Barista's Pick</span>
+                        <h4>Caramel Hazelnut Latte</h4>
+                        <p>Espresso with steamed milk, caramel, and toasted hazelnut syrup.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ===== GALLERY ===== -->
     <section class="section-padding" id="gallery">
         <div class="container">
@@ -1523,6 +1891,39 @@
                 <h2 class="section-title">A glimpse inside Luna</h2>
             </div>
             <div class="gallery-grid" id="galleryGrid"></div>
+        </div>
+    </section>
+
+    <!-- ===== TEAM ===== -->
+    <section class="team-section section-padding">
+        <div class="container">
+            <div class="text-center reveal">
+                <span class="section-label">Our Team</span>
+                <h2 class="section-title">The faces behind the counter</h2>
+                <p class="section-sub mx-auto">Passionate baristas and chefs who make every visit special.</p>
+            </div>
+            <div class="team-grid">
+                <div class="team-member reveal">
+                    <img src="https://images.unsplash.com/photo-1580618672591-eb180b1a973f?w=400&q=80&auto=format&fit=crop&crop=face" alt="Head Barista" loading="lazy" />
+                    <h4>Ahmed R.</h4>
+                    <span class="role">Head Barista</span>
+                </div>
+                <div class="team-member reveal">
+                    <img src="https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&q=80&auto=format&fit=crop&crop=face" alt="Pastry Chef" loading="lazy" />
+                    <h4>Zara K.</h4>
+                    <span class="role">Pastry Chef</span>
+                </div>
+                <div class="team-member reveal">
+                    <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=400&q=80&auto=format&fit=crop&crop=face" alt="Sous Chef" loading="lazy" />
+                    <h4>Omar F.</h4>
+                    <span class="role">Sous Chef</span>
+                </div>
+                <div class="team-member reveal">
+                    <img src="https://images.unsplash.com/photo-1531746020798-e6953c6e8e04?w=400&q=80&auto=format&fit=crop&crop=face" alt="Restaurant Manager" loading="lazy" />
+                    <h4>Layla S.</h4>
+                    <span class="role">Manager</span>
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1585,6 +1986,58 @@
         </div>
     </section>
 
+    <!-- ===== RESERVATION FORM ===== -->
+    <section class="reservation-form-section section-padding" id="reservation">
+        <div class="container">
+            <div class="form-grid">
+                <div class="reveal">
+                    <span class="section-label">Reserve</span>
+                    <h2 class="section-title">Book your table</h2>
+                    <p style="color:var(--text-muted); line-height:1.8;">
+                        Planning a visit? Let us know when you're coming, and we'll make sure a warm welcome awaits you.
+                    </p>
+                    <img src="https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&q=80&auto=format&fit=crop" alt="Cozy table setting" style="border-radius:var(--radius); margin-top:20px; box-shadow:var(--shadow);" loading="lazy" />
+                </div>
+                <div class="reservation-form reveal">
+                    <h3>Make a Reservation</h3>
+                    <p>Fill in your details and we'll confirm your booking shortly.</p>
+                    <form id="reservationForm" onsubmit="event.preventDefault(); alert('Thank you! Your reservation request has been sent.');">
+                        <div class="form-group">
+                            <label for="resName">Full Name</label>
+                            <input type="text" id="resName" placeholder="Your name" required />
+                        </div>
+                        <div class="form-group">
+                            <label for="resEmail">Email Address</label>
+                            <input type="email" id="resEmail" placeholder="you@example.com" required />
+                        </div>
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="resDate">Date</label>
+                                <input type="date" id="resDate" required />
+                            </div>
+                            <div class="form-group">
+                                <label for="resTime">Time</label>
+                                <input type="time" id="resTime" required />
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <label for="resPeople">Number of Guests</label>
+                            <select id="resPeople">
+                                <option>1</option><option>2</option><option>3</option>
+                                <option>4</option><option>5</option><option>6+</option>
+                            </select>
+                        </div>
+                        <div class="form-group">
+                            <label for="resNotes">Special Requests</label>
+                            <textarea id="resNotes" placeholder="Any allergies, preferences, or special occasions..."></textarea>
+                        </div>
+                        <button type="submit" class="btn btn-primary">Reserve Now</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </section>
+
     <!-- ===== INSTAGRAM ===== -->
     <section class="section-padding" style="background: #fff;">
         <div class="container">
@@ -1595,6 +2048,21 @@
             <div class="instagram-grid" id="instagramGrid"></div>
             <div class="instagram-footer">
                 <a href="https://instagram.com" target="_blank" class="btn btn-secondary">Follow Us</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== NEWSLETTER ===== -->
+    <section class="newsletter-section">
+        <div class="container">
+            <div class="newsletter-wrapper reveal">
+                <span class="section-label">Stay in touch</span>
+                <h3>Newsletter</h3>
+                <p>Get the latest updates on new menu items, events, and exclusive offers.</p>
+                <form class="newsletter-form" onsubmit="event.preventDefault(); alert('Thank you for subscribing!');">
+                    <input type="email" placeholder="Your email address" required />
+                    <button type="submit" class="btn btn-primary">Subscribe</button>
+                </form>
             </div>
         </div>
     </section>
@@ -1648,6 +2116,7 @@
             <div class="btn-group">
                 <a href="tel:+923001234567" class="btn btn-terracotta">Call Us</a>
                 <a href="https://wa.me/923001234567" target="_blank" class="btn btn-outline-light">Message on WhatsApp</a>
+                <a href="#reservation" class="btn btn-primary">Book Online</a>
             </div>
         </div>
     </section>
@@ -1676,6 +2145,7 @@
                     <a href="#home">Home</a>
                     <a href="#story">Our Story</a>
                     <a href="#menu">Menu</a>
+                    <a href="#specials">Specials</a>
                     <a href="#gallery">Gallery</a>
                     <a href="#contact">Contact</a>
                 </div>
@@ -1767,6 +2237,7 @@
             renderMenu('coffee');
 
             // ===== GALLERY =====
+            // Fixed barista image URL: using a reliable one
             const galleryImages = [
                 { src: 'https://images.unsplash.com/photo-1509440159596-0249088772ff?w=600&q=80&auto=format&fit=crop', alt: 'Fresh pastries and croissants' },
                 { src: 'https://images.unsplash.com/photo-1554118811-1e0d58224f24?w=600&q=80&auto=format&fit=crop', alt: 'Cozy café interior with warm lighting' },
@@ -1823,6 +2294,29 @@
                     </div>
                 `).join('');
 
+            // ===== STATS COUNTER =====
+            const statNumbers = document.querySelectorAll('.stat-item .number');
+            let countersStarted = false;
+
+            function startCounters() {
+                if (countersStarted) return;
+                countersStarted = true;
+                statNumbers.forEach(el => {
+                    const target = parseFloat(el.dataset.count);
+                    const increment = target / 80;
+                    let current = 0;
+                    const timer = setInterval(() => {
+                        current += increment;
+                        if (current >= target) {
+                            el.textContent = target;
+                            clearInterval(timer);
+                        } else {
+                            el.textContent = Math.floor(current);
+                        }
+                    }, 25);
+                });
+            }
+
             // ===== NAVBAR SCROLL =====
             const header = document.getElementById('header');
             window.addEventListener('scroll', function() {
@@ -1830,6 +2324,15 @@
                 header.classList.toggle('scrolled', scrollY > 40);
                 const backBtn = document.getElementById('backToTop');
                 backBtn.classList.toggle('visible', scrollY > 600);
+
+                // Trigger stats when stats section is visible
+                const statsSection = document.querySelector('.stats-section');
+                if (statsSection) {
+                    const rect = statsSection.getBoundingClientRect();
+                    if (rect.top < window.innerHeight && rect.bottom > 0) {
+                        startCounters();
+                    }
+                }
             });
 
             // ===== BACK TO TOP =====
@@ -1878,6 +2381,14 @@
                     }
                 });
             });
+
+            // ===== SET TODAY'S DATE IN RESERVATION FORM =====
+            const dateInput = document.getElementById('resDate');
+            if (dateInput) {
+                const today = new Date().toISOString().split('T')[0];
+                dateInput.setAttribute('min', today);
+                dateInput.value = today;
+            }
 
             console.log('☕ Luna Café — Good coffee. Good food. Good moments.');
         });
